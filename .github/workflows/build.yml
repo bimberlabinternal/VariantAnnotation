@@ -11,10 +11,10 @@ jobs:
     steps:
       - name: Install packages
         run: |
-          sudo apt-get update && sudo apt-get install -yq tabix
+          sudo apt-get update && sudo apt-get install -yq file tabix
 
       - name: "Download/Build"
         env:
           N_THREADS: 2
         run: |
-          bash ./initializeAll.sh
+          bash ./runInitializeTest.sh
