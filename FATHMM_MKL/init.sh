@@ -32,4 +32,4 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	touch $DONE_FILE
 fi
 
-createConfigFileForBed $NAME $GENOME $OUTFILE
+createConfigFileForVcf $NAME $GENOME $OUTFILE

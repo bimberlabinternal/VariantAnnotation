@@ -6,9 +6,11 @@ set -u
 
 # This is the path of this script:
 SCRIPT_DIR=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
-
-GATK=`which gatk`
 DONE_FILE=processingDone.txt
+
+if [[ -z ${GATK:=} ]] ;then
+	GATK=`which gatk`
+fi
 
 # NOTE: if the environment variable N_THREADS is defined (which should be an integer), then it will be passed to sort
 if [[ ! -v N_THREADS ]];then

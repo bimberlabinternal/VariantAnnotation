@@ -19,7 +19,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 
 	{
 	echo '##fileformat=VCFv4.2';
-	echo '##FORMAT=<ID=CADD_PH,Number=A,Type=Float,Description="This is the CADD PHRED score">';
+	echo '##INFO=<ID=CADD_PH,Number=A,Type=Float,Description="This is the CADD PHRED score">';
 	echo '#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO';
 	zcat $TEMP_FILE | grep -v '#' | awk -v OFS='\t' ' { print $1, $2, ".", $3, $4, ".", "PASS", "CADD_PH="$5 } ';
 	} | bgzip --threads $N_THREADS > $OUTFILE
