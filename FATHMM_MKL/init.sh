@@ -13,8 +13,7 @@ TEMP_FILE=fathmm-MKL_Current.tab.gz
 OUTFILE=./$GENOME/FATHMM.vcf.gz
 NAME=fathmm
 
-DONE_FILE=processingDone.txt
-if [ ! -e $DONE_FILE ];then
+if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
 	downloadSourceFile $URL $TEMP_FILE
 

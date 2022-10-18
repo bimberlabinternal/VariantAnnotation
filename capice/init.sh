@@ -13,8 +13,7 @@ TEMP_FILE=capice_v1.0_build37_indels.tsv.gz
 OUTFILE=./$GENOME/capice.vcf
 NAME=capice
 
-DONE_FILE=processingDone.txt
-if [ ! -e $DONE_FILE ];then
+if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
 	downloadSourceFile $URL $TEMP_FILE
 

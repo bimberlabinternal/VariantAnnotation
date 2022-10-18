@@ -13,9 +13,7 @@ TEMP_FILE=Clinpred.txt
 OUTFILE=./$GENOME/ClinPred.vcf
 NAME=clinpred
 
-# This is a possible pattern for making VCFs:
-DONE_FILE=processingDone.txt
-if [ ! -e $DONE_FILE ];then
+if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
 	downloadSourceFile $URL $TEMP_FILE
 

@@ -13,16 +13,12 @@
 set -e
 set -x
 
-VCF=/home/groups/BimberLab/Exacloud/test_datasource/customDataSource/simpleTest.vcf
-
-GATK=/home/groups/BimberLab/Exacloud/mulch/TOOLS/gatk-4.2.6.1/gatk
 REF=/home/groups/prime-seq/production/Shared/@files/.referenceLibraries/99/99_Human_GRCh37.p13_Ensembl.fasta
-DATA_SOURCE=/home/groups/BimberLab/Exacloud/test_datasource/customDataSource
+
 
 OUT_PREFIX=`basename $VCF ".vcf"`
 OUTPUT=${OUT_PREFIX}.funcotated.maf
 
-$GATK IndexFeatureFile -I $VCF
 
 $GATK Funcotator \
 	--variant $VCF \

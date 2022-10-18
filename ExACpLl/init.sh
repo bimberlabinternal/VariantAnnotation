@@ -13,8 +13,7 @@ TEMP_FILE=ExAC.r1.sites.vep.vcf.gz
 OUTFILE=./$GENOME/ExAC.bed
 NAME=ExAC
 
-DONE_FILE=processingDone.txt
-if [ ! -e $DONE_FILE ];then
+if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
 	downloadSourceFile $URL $TEMP_FILE
 

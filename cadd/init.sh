@@ -13,8 +13,7 @@ TEMP_FILE=whole_genome_SNVs.tsv.gz
 OUTFILE=./$GENOME/cadd.vcf.gz
 NAME=cadd
 
-DONE_FILE=processingDone.txt
-if [ ! -e $DONE_FILE ];then
+if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
 	downloadSourceFile $URL $TEMP_FILE
 

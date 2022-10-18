@@ -8,6 +8,7 @@ set -u
 SCRIPT_DIR=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 
 GATK=`which gatk`
+DONE_FILE=processingDone.txt
 
 # NOTE: if the environment variable N_THREADS is defined (which should be an integer), then it will be passed to sort
 if [[ ! -v N_THREADS ]];then
@@ -18,10 +19,10 @@ echo "Threads: "$N_THREADS
 
 isCompressed() {
 	if (file $1 | grep -q compressed ) ; then
-		return 1
+		echo 1
 	fi
 	
-	return 0
+	echo 0
 }
 
 ensureGenomeFolderExists() {
@@ -47,11 +48,13 @@ downloadSourceFile() {
 	else
 		echo "Limiting downline to "$DOWNLOAD_LINE_LIMIT" lines"
 		MAYBE_ZCAT='cat'
+		MAYBE_ZGZIP='cat'
 		if [[ $WGET_OUT == *.gz ]];then
 			MAYBE_ZCAT="zcat"
+			MAYBE_ZGZIP="gzip"
 		fi
 		
-		wget --no-check-certificate -q -O - "$URL" | $MAYBE_ZCAT | head -n $DOWNLOAD_LINE_LIMIT > $WGET_OUT 
+		wget --no-check-certificate -q -O - "$URL" | $MAYBE_ZCAT | head -n $DOWNLOAD_LINE_LIMIT | $MAYBE_ZGZIP > $WGET_OUT 
 	fi
 }
 
@@ -59,46 +62,35 @@ runIndexFeatureFile() {
 	$GATK IndexFeatureFile -I $1
 }
 
-bgzipAndIndexBed() {
-	F=$1
-	
-	bgzip -f --threads $N_THREADS $F
-	tabix -f ${F}.gz
-}
-
 ensureBedOrVcfSorted() {
 	INPUT=$1
 	TMP_OUT=tmp.txt
 	
-	cat $INPUT | grep -e '#' > $TMP_OUT
-	cat $INPUT | grep -v '#' | sort --parallel $N_THREADS -V -k1,1 -k2,2n >> $TMP_OUT
+	COMPRESSED=`isCompressed $1`
+	MAYBE_ZCAT="cat"
+	MAYBE_BGZIP="cat"
+	if [[ $COMPRESSED == 1 ]] ;then
+		MAYBE_ZCAT="zcat"
+		MAYBE_BGZIP="bgzip"
+	fi
+
+	{
+	$MAYBE_ZCAT $INPUT | grep -e '#';
+	$MAYBE_ZCAT $INPUT | grep -v '#' | sort --parallel $N_THREADS -V -k1,1 -k2,2n;
+	} | $MAYBE_ZGZIP >> $TMP_OUT
+
 	rm $INPUT
 	mv $TMP_OUT $INPUT
 }
 
 ensureIndexed() {
-	if -z isCompressed $1 ;then
+	COMPRESSED=`isCompressed $1`
+	
+	if [[ $COMPRESSED == 1 ]] ;then
 		tabix -f $1
 	else
 		runIndexFeatureFile $1
 	fi
-}
-
-ensureUnzippedInputSortedAndIndexed() {
-	ensureBedOrVcfSorted $1
-	runIndexFeatureFile $1
-}
-
-ensureBedSortedAndIndexed() {
-	ensureUnzippedInputSortedAndIndexed $1
-}
-
-ensureVcfSortedAndIndexed() {
-	ensureUnzippedInputSortedAndIndexed $1
-}
-
-ensureVcfGzIndex() {
-	tabix -p vcf $1
 }
 
 createConfigFileForBed() {
@@ -119,4 +111,17 @@ createConfigFile() {
 	DEST=./${GENOME}/${NAME}.config
 	
 	cat $TEMPLATE | sed 's/<NAME>/'$NAME'/' | sed 's|<SRC_FILE>|'$SRC_FILE'|' | sed 's/<TYPE>/'$TYPE'/' > $DEST
+}
+
+isProcessingCompleted() {
+	if [[ -e $DONE_FILE && ${FORCE_REPROCESS:=0} == 1 ]];then
+		echo "FORCE_REPROCESS=$FORCE_REPROCESS, deleting existing "$DONE_FILE
+		rm $DONE_FILE
+	fi
+	
+	if [[ -e $DONE_FILE ]];then
+		echo 1
+	else
+		echo 0
+	fi
 }

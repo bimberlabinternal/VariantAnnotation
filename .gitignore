@@ -37,3 +37,12 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+*.vcf
+*.vcf.gz
+*.config
+*.bed
+*.gz
+*.idx
+*.tbi
+processingDone.txt
