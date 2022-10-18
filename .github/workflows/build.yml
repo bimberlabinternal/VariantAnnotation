@@ -1,0 +1,20 @@
+name: Build Variant Annotation
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "*"
+  pull_request:
+jobs:
+  build-sources:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install packages
+        run: |
+          sudo apt-get update && sudo apt-get install -yq tabix
+
+      - name: "Download/Build"
+        env:
+          N_THREADS: 2
+        run: |
+          bash ./initializeAll.sh

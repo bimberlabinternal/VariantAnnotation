@@ -1,0 +1,13 @@
+##fileformat=VCFv4.2
+##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+##INFO=<ID=DS,Number=1,Type=String,Description="The data source this is designed to test">
+##INFO=<ID=VAL,Number=1,Type=String,Description="The value as expect to be added, or blank if this should not match">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+1	10002	.	C	G	1	PASS	DS=FATHMM_MKL
+1	10069	.	C	A	1	PASS	DS=Capice;VAL
+1	10106	.	C	T	1	PASS	DS=Capice;VAL=3.6949452351109358e-06
+1	10107	.	C	A	1	PASS	DS=CADD
+1	10107	.	C	A	1	PASS	DS=CADD
+1	69092	.	C	A	1	PASS	DS=clinpredscore;VAL=0.0901794731616974
+1	69093	.	C	A	1	PASS	DS=clinpredscore;VAL=0.0901794731616974
+1	69094	.	C	A	1	PASS	DS=clinpredscore;VAL=0.0901794731616974
