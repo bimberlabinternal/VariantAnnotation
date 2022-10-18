@@ -17,4 +17,6 @@ jobs:
         env:
           N_THREADS: 2
         run: |
+          pwd
+          ls
           bash ./runInitializeTest.sh
