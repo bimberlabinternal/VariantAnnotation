@@ -50,13 +50,13 @@ downloadSourceFile() {
 	else
 		echo "Limiting downline to "$DOWNLOAD_LINE_LIMIT" lines"
 		MAYBE_ZCAT='cat'
-		MAYBE_ZGZIP='cat'
+		MAYBE_BGZIP='cat'
 		if [[ $WGET_OUT == *.gz ]];then
 			MAYBE_ZCAT="zcat"
-			MAYBE_ZGZIP="gzip"
+			MAYBE_BGZIP="bgzip"
 		fi
 		
-		wget --no-check-certificate -q -O - "$URL" | $MAYBE_ZCAT | head -n $DOWNLOAD_LINE_LIMIT | $MAYBE_ZGZIP > $WGET_OUT 
+		wget --no-check-certificate -q -O - "$URL" | $MAYBE_ZCAT | head -n $DOWNLOAD_LINE_LIMIT | $MAYBE_BGZIP > $WGET_OUT 
 	fi
 }
 

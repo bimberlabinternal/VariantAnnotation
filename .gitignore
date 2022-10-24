@@ -46,3 +46,8 @@ vignettes/*.pdf
 *.idx
 *.tbi
 processingDone.txt
+*.gtf
+*.fai
+*.fa
+*.dict
+*.config_new
