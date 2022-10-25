@@ -8,16 +8,24 @@ set -u
 SCRIPT_DIR=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 DONE_FILE=processingDone.txt
 
-if [[ -z ${GATK:=} ]] ;then
-	GATK=`which gatk`
-fi
-
 # NOTE: if the environment variable N_THREADS is defined (which should be an integer), then it will be passed to sort
 if [[ ! -v N_THREADS ]];then
 	N_THREADS=4
 fi
 
 echo "Threads: "$N_THREADS
+
+function is_bin_in_path {
+	which "$1" &> /dev/null || { echo "$1 not in path"; exit 1; }
+}
+
+if [[ -z ${GATK:=} ]] ;then
+	is_bin_in_path gatk
+	GATK=`which gatk`
+fi
+
+is_bin_in_path samtools
+is_bin_in_path bgzip
 
 isCompressed() {
 	if (file $1 | grep -q compressed ) ; then
@@ -50,13 +58,13 @@ downloadSourceFile() {
 	else
 		echo "Limiting downline to "$DOWNLOAD_LINE_LIMIT" lines"
 		MAYBE_ZCAT='cat'
-		MAYBE_BGZIP='cat'
+		MAYBE_ZGZIP='cat'
 		if [[ $WGET_OUT == *.gz ]];then
 			MAYBE_ZCAT="zcat"
-			MAYBE_BGZIP="bgzip"
+			MAYBE_ZGZIP="bgzip"
 		fi
 		
-		wget --no-check-certificate -q -O - "$URL" | $MAYBE_ZCAT | head -n $DOWNLOAD_LINE_LIMIT | $MAYBE_BGZIP > $WGET_OUT 
+		wget --no-check-certificate -q -O - "$URL" | $MAYBE_ZCAT | head -n $DOWNLOAD_LINE_LIMIT | $MAYBE_ZGZIP > $WGET_OUT 
 	fi
 }
 
