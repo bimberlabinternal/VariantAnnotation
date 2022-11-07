@@ -33,6 +33,14 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	
 	rm -Rf getGencode.sh
 	rm -Rf fixGencodeOrdering.py
+	
+	samtools faidx ./hg19/gencode.v34lift37.pc_transcripts.fa
+	samtools dict -o ./hg19/gencode.v34lift37.pc_transcripts.dict ./hg19/gencode.v34lift37.pc_transcripts.fa
+	gatk IndexFeatureFile -I ./hg19/gencode.v34lift37.annotation.REORDERED.gtf
+
+	samtools faidx ./hg38/gencode.v34.pc_transcripts.fa
+	samtools dict -o ./hg38/gencode.v34.pc_transcripts.dict ./hg38/gencode.v34.pc_transcripts.fa
+	gatk IndexFeatureFile -I ./hg38/gencode.v34.annotation.REORDERED.gtf
 
 	# MMul10:
 	if [ -e mmul10 ];then
