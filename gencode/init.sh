@@ -23,6 +23,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	wget -O fixGencodeOrdering.py https://raw.githubusercontent.com/broadinstitute/gatk/master/scripts/funcotator/data_sources/fixGencodeOrdering.py
 
 	chmod +x getGencode.sh
+	chmod +x fixGencodeOrdering.sh
 	bash getGencode.sh
 	
 	# Normalize file locations:
