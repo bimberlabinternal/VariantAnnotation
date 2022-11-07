@@ -38,9 +38,19 @@ if [[ `isProcessingCompleted` == 0 ]];then
 		rm -Rf mmul10
 	fi
 	
-	# wget https://ftp.ensembl.org/pub/release-108/gtf/macaca_mulatta/Macaca_mulatta.Mmul_10.108.gtf.gz
-	# mv Macaca_mulatta.Mmul_10.108.gtf.gz ./mmul10/
-	# See this option: https://bedtools.readthedocs.io/en/latest/content/tools/maskfasta.html
+	mkdir mmul10
+	
+	# Now make a fake almost empty file for mmul10:
+	echo '>Gene1|Gene1|CDS:1-10' > mmul10/MMul10_transcript.fa
+	echo "AAAAAAAAAA" >> mmul10/MMul10_transcript.fa
+	
+	cp MMul10.gtf mmul10/MMul10.gtf
+	cp MMul10.gtf.idx mmul10/MMul10.gtf.idx
+
+	samtools faidx mmul10/MMul10_transcript.fa
+	samtools dict -o mmul10/MMul10_transcript.dict mmul10/MMul10_transcript.fa
+	
+	cp MMul10.gencode.config ./mmul10/gencode.config
 	
 	touch $DONE_FILE
 fi
