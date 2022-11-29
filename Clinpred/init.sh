@@ -18,7 +18,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	downloadSourceFile $URL $TEMP_FILE
 
 	echo '##fileformat=VCFv4.2' > $OUTFILE
-	echo '##FORMAT=<ID=ClinPredScore,Number=A,Type=Float,Description="This is the ClinPredScore score">' >> $OUTFILE
+	echo '##INFO=<ID=ClinPredScore,Number=A,Type=Float,Description="This is the ClinPredScore score">' >> $OUTFILE
 	echo '#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO' >> $OUTFILE
 
 	cat $TEMP_FILE  | tail -n +2 | grep -v '#' | awk -v OFS='\t' ' { print $1, $2, ".", $3, $4, ".", "PASS", "ClinPredScore="$5 } ' >> $OUTFILE
