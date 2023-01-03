@@ -1,3 +1,5 @@
+[![Build Variant Annotation](https://github.com/bimberlabinternal/VariantAnnotation/actions/workflows/build.yml/badge.svg)](https://github.com/bimberlabinternal/VariantAnnotation/actions/workflows/build.yml)
+
 # VariantAnnotation
 
 A set of scripts to build custom funcotator-compatible data sources
