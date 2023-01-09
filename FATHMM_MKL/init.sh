@@ -20,9 +20,9 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	{
 	echo '##fileformat=VCFv4.2';
 	echo '##INFO=<ID=F_NC,Number=A,Type=Float,Description="This is the fathmm-MKL noncoding score, which is a prediction of the functional consequence of the variant. Predictions are given as p-values in the range [0, 1]: values above 0.5 are predicted to be deleterious, while those below 0.5 are predicted to be neutral or benign. P-values close to the extremes (0 or 1) are the highest-confidence predictions that yield the highest accuracy.">';
-	echo '##INFO=<ID=F_NCG,Number=A,Type=Float,Description="These are the functional groups defined by the fathmm-MKL non-coding score, indicating the categories of functional consequence. See the fanthamm paper for their meanings">';
+	echo '##INFO=<ID=F_NCG,Number=A,Type=String,Description="These are the functional groups defined by the fathmm-MKL non-coding score, indicating the categories of functional consequence. See the fanthamm paper for their meanings">';
 	echo '##INFO=<ID=F_C,Number=A,Type=Float,Description="This is the fathmm-MKL coding score, which is a prediction of the functional consequence of the variant. Predictions are given as p-values in the range [0, 1]: values above 0.5 are predicted to be deleterious, while those below 0.5 are predicted to be neutral or benign. P-values close to the extremes (0 or 1) are the highest-confidence predictions that yield the highest accuracy.">';
-	echo '##INFO=<ID=F_CG,Number=A,Type=Float,Description="These are the functional groups defined by the fathmm-MKL coding score, indicating the categories of functional consequence. See the fanthamm paper for their meanings.">';
+	echo '##INFO=<ID=F_CG,Number=A,Type=String,Description="These are the functional groups defined by the fathmm-MKL coding score, indicating the categories of functional consequence. See the fanthamm paper for their meanings.">';
 	echo '#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO';
 	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' {  gsub(/ /, "_", $9); print $1, $2, ".", $4, $5, ".", "PASS", "F_NC="$6";F_NCG="$7";F_CG="$8";F_CG="$9 } ';
 	} | bgzip -f --threads $N_THREADS > $OUTFILE

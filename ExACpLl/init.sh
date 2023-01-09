@@ -10,15 +10,15 @@ source ${SCRIPT_DIR}/initFunctions.sh
 URL="https://storage.googleapis.com/gcp-public-data--gnomad/legacy/exac_browser/ExAC.r1.sites.vep.vcf.gz"
 GENOME=hg19
 TEMP_FILE=ExAC.r1.sites.vep.vcf.gz
-OUTFILE=./$GENOME/ExAC.bed
+OUTFILE=./$GENOME/ExAC.vcf.gz
 NAME=ExAC
 
 if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
 	downloadSourceFile $URL $TEMP_FILE
 
-	echo "#CHROM	START-0	END-1	Exac" > $OUTFILE
-	zcat $TEMP_FILE | awk -v OFS='\t' ' { print $1, $2-1, $2, $5 } ' >> $OUTFILE
+	#echo "#CHROM	START-0	END-1	Exac" > $OUTFILE
+	cp $TEMP_FILE $OUTFILE
 
 	# This is a possible pattern for making VCFs:
 	#cat vcfHeader.txt > Exac.test.vcf
@@ -29,6 +29,6 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	touch $DONE_FILE
 fi
 
-createConfigFileForBed $NAME $GENOME $OUTFILE
+createConfigFileForVcf $NAME $GENOME $OUTFILE
 
 
