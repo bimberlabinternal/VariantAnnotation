@@ -21,7 +21,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	echo '##INFO=<ID=PPH2,Number=A,Type=Float,Description="This is the polyphren2 score">' >> $OUTFILE
 	echo '#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO' >> $OUTFILE
 
-	zcat $TEMP_FILE | grep -v '#' | grep -v "CHR" | awk -v OFS='\t' ' { print $1, $2, ".", $4, $5, ".", "PASS", "PPH2="$11 } ' >> $OUTFILE
+	zcat $TEMP_FILE | grep -v '#' | grep -v "CHR" | awk -F'\t' -v OFS='\t' ' { print $1, $2, ".", $4, $5, ".", "PASS", "PPH2="$11 } ' >> $OUTFILE
 	runIndexFeatureFile $OUTFILE
 	rm $TEMP_FILE
 	

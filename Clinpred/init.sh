@@ -21,7 +21,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	echo '##INFO=<ID=ClinPredScore,Number=A,Type=Float,Description="This is the ClinPredScore score">' >> $OUTFILE
 	echo '#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO' >> $OUTFILE
 
-	cat $TEMP_FILE  | tail -n +2 | grep -v '#' | awk -v OFS='\t' ' { print $1, $2, ".", $3, $4, ".", "PASS", "ClinPredScore="$5 } ' >> $OUTFILE
+	cat $TEMP_FILE  | tail -n +2 | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, ".", $3, $4, ".", "PASS", "ClinPredScore="$5 } ' >> $OUTFILE
 	ensureIndexed $OUTFILE
 	rm $TEMP_FILE
 	touch $DONE_FILE

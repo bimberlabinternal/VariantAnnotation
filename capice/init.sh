@@ -21,7 +21,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	echo '##INFO=<ID=CAPICE,Number=A,Type=Float,Description="This is the capice score">' >> $OUTFILE
 	echo '#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO' >> $OUTFILE
 
-	zcat $TEMP_FILE | grep -v '#' | awk -v OFS='\t' ' { print $1, $2, ".", $3, $4, ".", "PASS", "CAPICE="$5 } ' >> $OUTFILE
+	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, ".", $3, $4, ".", "PASS", "CAPICE="$5 } ' >> $OUTFILE
 	ensureIndexed $OUTFILE
 	rm $TEMP_FILE
 	
