@@ -3,7 +3,10 @@
 set -e
 set -x
 
-SCRIPT_DIR=../../customDataSource2/scripts/
+if [[ -z ${SCRIPT_DIR:=} ]] ;then
+	SCRIPT_DIR=../scripts
+fi
+
 source ${SCRIPT_DIR}/initFunctions.sh
 
 # The purpose of this script is to download conservation data from the web, and reformat as needed.

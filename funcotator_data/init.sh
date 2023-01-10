@@ -8,7 +8,10 @@ if [[ -z ${SKIP_FUNCOTATOR:=} ]] ;then
 	exit 0
 fi
 
-SCRIPT_DIR=../scripts
+if [[ -z ${SCRIPT_DIR:=} ]] ;then
+	SCRIPT_DIR=../scripts
+fi
+
 source ${SCRIPT_DIR}/initFunctions.sh
 
 $GATK FuncotatorDataSourceDownloader --somatic --validate-integrity --extract-after-download

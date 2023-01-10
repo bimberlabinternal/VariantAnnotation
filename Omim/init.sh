@@ -3,7 +3,10 @@
 set -e
 set -x
 
-SCRIPT_DIR=../../scripts
+if [[ -z ${SCRIPT_DIR:=} ]] ;then
+	SCRIPT_DIR=../scripts
+fi
+
 source ${SCRIPT_DIR}/initFunctions.sh
 
 # The purpose of this script is to download A tab-delimited file containing OMIM's Synopsis of the Human Gene Map including additional information such as genomic coordinates and inheritance

@@ -3,7 +3,10 @@
 set -e
 set -x
 
-SCRIPT_DIR=../scripts
+if [[ -z ${SCRIPT_DIR:=} ]] ;then
+	SCRIPT_DIR=../scripts
+fi
+
 source ${SCRIPT_DIR}/initFunctions.sh
 
 if [[ `isProcessingCompleted` == 0 ]];then
