@@ -3,6 +3,7 @@
 # This script can be used to sanity-check the data source downloads
 export DOWNLOAD_LINE_LIMIT=1000
 export FORCE_REPROCESS=0
+export SKIP_FUNCOTATOR=1
 
 bash initializeAll.sh
 
