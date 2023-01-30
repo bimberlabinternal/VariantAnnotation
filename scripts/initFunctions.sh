@@ -30,9 +30,9 @@ is_bin_in_path bgzip
 isCompressed() {
 	if (file $1 | grep -q compressed ) ; then
 		echo 1
+	else
+		echo 0
 	fi
-	
-	echo 0
 }
 
 ensureGenomeFolderExists() {
