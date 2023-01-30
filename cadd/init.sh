@@ -3,7 +3,7 @@
 set -e
 set -x
 
-if [[ -z ${GATK:=} ]] ;then
+if [[ -z ${SCRIPT_DIR:=} ]] ;then
 	SCRIPT_DIR=../scripts
 fi
 
