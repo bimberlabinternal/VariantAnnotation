@@ -16,8 +16,11 @@ source ${SCRIPT_DIR}/initFunctions.sh
 
 # The purpose of this script is to download cassandra data sources from the web, and reformat as needed.
 
-wget ftp.hgsc.bcm.edu/Software/Cassandra/version_15.4.10/dataSourcesApr15.tar.gz
-tar -zxvf dataSourcesApr15.tar.gz
+URL=ftp.hgsc.bcm.edu/Software/Cassandra/version_15.4.10/dataSourcesApr15.tar.gz
+TEMP_FILE=dataSourcesApr15.tar.gz
+downloadSourceFile $URL $TEMP_FILE
+
+tar -zxvf $TEMP_FILE
 
 # Remove duplicate data sources
 rm -r CADD
