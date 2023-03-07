@@ -22,6 +22,9 @@ function is_bin_in_path {
 if [[ -z ${GATK:=} ]] ;then
 	is_bin_in_path gatk
 	GATK=`which gatk`
+else
+	GATK_DIR=`dirname $GATK`
+	export PATH=$PATH:$GATK_DIR
 fi
 
 is_bin_in_path samtools
