@@ -4,7 +4,7 @@ set -e
 set -x
 
 # NOTE: the funcotator sources are huge and cannot be easily subset, so dont run this during testing
-if [[ ! -z ${SKIP_FUNCOTATOR:=} ]] ;then
+if [[ ! -z ${SKIP_LARGE_SOURCES:=} ]] ;then
 	exit 0
 fi
 

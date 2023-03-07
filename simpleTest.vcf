@@ -2,6 +2,7 @@
 ##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
 ##INFO=<ID=DS,Number=.,Type=String,Description="The data source this is designed to test">
 ##INFO=<ID=VAL,Number=.,Type=String,Description="The value as expect to be added, or blank if this should not match">
+##INFO=<ID=GENE,Number=.,Type=String,Description="....figure out how to add in those with only GENE_NAME attrib">
 #CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
 1	10000	.	C	G	1	PASS	DS=oreganno;VAL=Type="TRANSCRIPTION_FACTOR_BINDING_SITE"
 1	10002	.	C	G	1	PASS	DS=F_NC,F_NCG,F_CG,F_CG;VAL=0.49817,C,0.87811,FCI
@@ -23,5 +24,21 @@
 1	69093	.	C	A	1	PASS	DS=clinpredscore;VAL=0.0901794731616974
 1	69094	.	C	A	1	PASS	DS=clinpredscore;VAL=0.0901794731616974
 1	69095	.	C	A	1	PASS	DS=clinpredscore;VAL=
+1	645710	ALU_umary_ALU_2	A	1	PASS	DS=SVoverlap;VAL=AC=35
+1	923923	.	G	A	1	PASS	DS=Omim;VAL=MIMNUMBER=[616765]
 1	949422	.	G	A	1	PASS	DS=clinvar;VAL=ALLELEID=446939
 1	1147297	.	G	A	1	PASS	DS=clinvar_hgmd;VAL=rs2298212
+1	17350510	.	C	.	1	PASS	DS=;lmm_known;VAL=GT
+1	123400001	.	G	.	1	PASS	DS=Omim;VAL=ANON1
+5	45664260	.	G	.	1	PASS	DS=cosmic_tissue;VAL=39340
+5	112073556	.	G	.	1	PASS	DS=acmg_rec;VAL=APC
+7	127228399	.	G	.	1	PASS	DS=genecode_xrefseq;VAL=NP_001653.1
+7	127228553	.	G	.	1	PASS	DS=gencode_xhgnc;VAL=AF493884
+8	116420724	.	G	.	1	PASS	DS=familial;VAL=TRPS1
+9	133589268	.	G	.	1	PASS	DS=cancer_gene_census;VAL=ABL1
+10	61548506	.	G	.	1	PASS	DS=cosmic_fusion;VAL=CCDC6
+10	90694831	.	G	.	1	PASS	DS=acmg_lof;VAL=ACTA2
+11	6190585	.	G	.	1	PASS	DS=achilles;VAL=OR52B2
+12	109535399	.	G	.	1	PASS	DS=dna_repair_genes;VAL=UNG
+19	58863336	.	G	.	1	PASS	DS=;simple_uniprot;VAL=A1BG
+19	58863336	.	G	.	1	PASS	DS=hgnc;VAL=A1BG
