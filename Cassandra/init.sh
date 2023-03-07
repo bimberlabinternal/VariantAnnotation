@@ -5,6 +5,7 @@ set -x
 
 # NOTE: the cassandra sources are huge and cannot be easily subset, so dont run this during testing
 if [[ ! -z ${SKIP_LARGE_SOURCES:=} ]] ;then
+	echo 'Skipping Cassandra since SKIP_LARGE_SOURCES is set'
 	exit 0
 fi
 

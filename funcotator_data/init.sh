@@ -5,6 +5,7 @@ set -x
 
 # NOTE: the funcotator sources are huge and cannot be easily subset, so dont run this during testing
 if [[ ! -z ${SKIP_LARGE_SOURCES:=} ]] ;then
+	echo 'Skipping Funcotator since SKIP_LARGE_SOURCES is set'
 	exit 0
 fi
 
