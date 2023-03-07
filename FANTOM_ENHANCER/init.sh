@@ -13,7 +13,7 @@ source ${SCRIPT_DIR}/initFunctions.sh
 URL="https://fantom.gsc.riken.jp/5/datafiles/latest/extra/Enhancers/human_permissive_enhancers_phase_1_and_2.bed.gz"
 GENOME=hg19
 TEMP_FILE=human_permissive_enhancers_phase_1_and_2.bed.gz
-OUTFILE=./$GENOME/FantomEnhancer.bed.gz
+OUTFILE=./$GENOME/FantomEnhancer.bed
 NAME=FANTOM_ENHANCER
 
 if [[ `isProcessingCompleted` == 0 ]];then
@@ -21,12 +21,10 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	downloadSourceFile $URL $TEMP_FILE
 
 	{
-	echo '##fileformat=bed';
-	echo '##INFO=<ID=OMIM,Number=A,Type=Float,Description="This is the fantom enhancer score">';
 	echo '#CHROM	START	END	ENHANCERID	SCORE	STRAND';
 	#(columns 1-6 as chromosome, start coordinate, end coordinate, enhancer ID, score and strand)
 	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, $3, $4, $5, $6 } ' | sort -V -k1,1 -k2,2n -k6,6;
-	} | bgzip --threads $N_THREADS > $OUTFILE
+	} > $OUTFILE
 	
 	ensureIndexed $OUTFILE
 	rm $TEMP_FILE

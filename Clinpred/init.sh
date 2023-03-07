@@ -13,18 +13,20 @@ source ${SCRIPT_DIR}/initFunctions.sh
 URL="https://cvmfs-hubs.vhost38.genap.ca/~alirezai/ClinPred"
 GENOME=hg19
 TEMP_FILE=Clinpred.txt
-OUTFILE=./$GENOME/ClinPred.vcf
+OUTFILE=./$GENOME/ClinPred.vcf.gz
 NAME=clinpred
 
 if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
 	downloadSourceFile $URL $TEMP_FILE
 
-	echo '##fileformat=VCFv4.2' > $OUTFILE
-	echo '##INFO=<ID=ClinPredScore,Number=A,Type=Float,Description="This is the ClinPredScore score">' >> $OUTFILE
-	echo '#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO' >> $OUTFILE
+	{
+	echo '##fileformat=VCFv4.2';
+	echo '##INFO=<ID=ClinPredScore,Number=A,Type=Float,Description="This is the ClinPredScore score">';
+	echo '#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO';
+	cat $TEMP_FILE  | tail -n +2 | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, ".", $3, $4, ".", "PASS", "ClinPredScore="$5 } ';
+	} | bgzip --threads $N_THREADS > $OUTFILE
 
-	cat $TEMP_FILE  | tail -n +2 | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, ".", $3, $4, ".", "PASS", "ClinPredScore="$5 } ' >> $OUTFILE
 	ensureIndexed $OUTFILE
 	rm $TEMP_FILE
 	touch $DONE_FILE

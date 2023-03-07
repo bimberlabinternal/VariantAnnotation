@@ -20,13 +20,8 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
 	downloadSourceFile $URL $TEMP_FILE
 
-	#echo "#CHROM	START-0	END-1	Exac" > $OUTFILE
 	cp $TEMP_FILE $OUTFILE
 
-	# This is a possible pattern for making VCFs:
-	#cat vcfHeader.txt > Exac.test.vcf
-	#zcat $TEMP_FILE | awk -v OFS='\t' ' { print $1, $2, ".", $3, $4, ".", "PASS", "EXAC="$5 } ' >> test.vcf
-	
 	ensureIndexed $OUTFILE
 	rm $TEMP_FILE
 	touch $DONE_FILE

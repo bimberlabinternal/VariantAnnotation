@@ -13,21 +13,23 @@ source ${SCRIPT_DIR}/initFunctions.sh
 URL="http://bbglab.irbbarcelona.org/fannsdb/downloads/fannsdb.tsv.gz"
 GENOME=hg19
 TEMP_FILE=fannsdb.tsv
-OUTFILE=./$GENOME/CONDEL.vcf
+OUTFILE=./$GENOME/CONDEL.vcf.gz
 NAME=Condel
 
 if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
 	downloadSourceFile $URL $TEMP_FILE
 
-	echo '##fileformat=VCFv4.2' > $OUTFILE
-	echo '##INFO=<ID=PPH2,Number=A,Type=Float,Description="This is the polyphren2 score">' >> $OUTFILE
-	echo '#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO' >> $OUTFILE
-
-	zcat $TEMP_FILE | grep -v '#' | grep -v "CHR" | awk -F'\t' -v OFS='\t' ' { print $1, $2, ".", $4, $5, ".", "PASS", "PPH2="$11 } ' >> $OUTFILE
-	runIndexFeatureFile $OUTFILE
-	rm $TEMP_FILE
+	{
+	echo '##fileformat=VCFv4.2';
+	echo '##INFO=<ID=PPH2,Number=A,Type=Float,Description="This is the polyphren2 score">';
+	echo '#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO';
+	zcat $TEMP_FILE | grep -v '#' | grep -v "CHR" | awk -F'\t' -v OFS='\t' ' { print $1, $2, ".", $4, $5, ".", "PASS", "PPH2="$11 } ';
+	} | bgzip --threads $N_THREADS > $OUTFILE
 	
+	runIndexFeatureFile $OUTFILE
+	
+	rm $TEMP_FILE
 	touch $DONE_FILE
 fi
 
