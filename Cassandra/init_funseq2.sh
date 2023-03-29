@@ -19,8 +19,8 @@ NAME=funseq2
 if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
 	{
-	echo '#CHROM	START	END	INFO';
-	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, $2+=1, $5 } ' | sort -V -k1,1 -k2,2n;
+	echo '#CHROM	START	END	SCORE';
+	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2-1, $2, $5 } ' | sort -V -k1,1 -k2,2n;
 	} > $OUTFILE
 
 	ensureIndexed $OUTFILE
