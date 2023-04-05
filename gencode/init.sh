@@ -22,8 +22,8 @@ if [[ `isProcessingCompleted` == 0 ]];then
 		rm -Rf hg38
 	fi
 	
-	wget -O getGencode.sh https://raw.githubusercontent.com/broadinstitute/gatk/master/scripts/funcotator/data_sources/getGencode.sh
-	wget -O fixGencodeOrdering.py https://raw.githubusercontent.com/broadinstitute/gatk/master/scripts/funcotator/data_sources/fixGencodeOrdering.py
+	wget -q -O getGencode.sh https://raw.githubusercontent.com/broadinstitute/gatk/master/scripts/funcotator/data_sources/getGencode.sh
+	wget -q -O fixGencodeOrdering.py https://raw.githubusercontent.com/broadinstitute/gatk/master/scripts/funcotator/data_sources/fixGencodeOrdering.py
 
 	chmod +x getGencode.sh
 	chmod +x fixGencodeOrdering.py

@@ -39,7 +39,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	downloadSourceFile $URL $TEMP_FILE
 
 	# NOTE: the input is in GRCh38, so translate into GRCh37:
-	wget -O $GFF $hg37
+	wget -q -O $GFF $hg37
 	
 	{
  	echo '#CHROM	START	END	ENSEMBLEGENE	ENSEMBLEID	MIMNUMBER	GENESYMBOL	PHENOTYPES';  	
