@@ -3,17 +3,16 @@
 #SBATCH --job-name=funcotator
 #SBATCH --ntasks=1
 #SBATCH --get-user-env
-#SBATCH --output=/home/groups/BimberLab/Exacloud/test_datasource/customDataSource/funcotator.log
-#SBATCH --error=/home/groups/BimberLab/Exacloud/test_datasource/customDataSource/funcotator.log
+#SBATCH --output=funcotator.log
+#SBATCH --error=funcotator.log
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64000
 #SBATCH --partition=exacloud
-#SBATCH --time=0-2
 
 set -e
 set -x
 
-REF=/home/groups/prime-seq/production/Shared/@files/.referenceLibraries/99/99_Human_GRCh37.p13_Ensembl.fasta
+REF=99_Human_GRCh37.p13_Ensembl.fasta
 
 
 OUT_PREFIX=`basename $VCF ".vcf"`

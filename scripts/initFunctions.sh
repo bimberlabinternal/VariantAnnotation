@@ -57,7 +57,7 @@ downloadSourceFile() {
 	fi
 	
 	if [[ -z ${DOWNLOAD_LINE_LIMIT:=} ]];then
-		wget --no-check-certificate -O $WGET_OUT "$URL"
+		wget --no-check-certificate -q -O $WGET_OUT "$URL"
 	else
 		echo "Limiting downline to "$DOWNLOAD_LINE_LIMIT" lines"
 		MAYBE_ZCAT='cat'
