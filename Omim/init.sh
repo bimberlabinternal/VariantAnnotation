@@ -27,7 +27,6 @@ source ${SCRIPT_DIR}/initFunctions.sh
 # Mouse gene symbol & ID (MGI)
 hg37="https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/405/GCF_000001405.25_GRCh37.p13/GCF_000001405.25_GRCh37.p13_genomic.gff.gz"
 
-URL=https://omim.org/static/omim/data/genemap2.txt
 GENOME=hg19
 TEMP_FILE=genemap2.txt
 OUTFILE=./$GENOME/omim.bed
@@ -35,7 +34,14 @@ GFF=GCF_000001405.25_GRCh37.p13_genomic.gff.gz
 NAME=omim
 
 if [[ `isProcessingCompleted` == 0 ]];then
+	if [[ -z ${OMIM_KEY:=} ]] ;then
+		echo "You must supply the environment variable OMIM_KEY to use OMIM"
+		return
+	fi
+
 	ensureGenomeFolderExists $GENOME
+	
+	URL=https://omim.org/downloads/${OMIM_KEY}/genemap2.txt
 	downloadSourceFile $URL $TEMP_FILE
 
 	# NOTE: the input is in GRCh38, so translate into GRCh37:
