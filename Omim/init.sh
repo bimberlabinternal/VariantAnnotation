@@ -36,7 +36,7 @@ NAME=omim
 if [[ `isProcessingCompleted` == 0 ]];then
 	if [[ -z ${OMIM_KEY:=} ]] ;then
 		echo "You must supply the environment variable OMIM_KEY to use OMIM"
-		return
+		exit 0
 	fi
 
 	ensureGenomeFolderExists $GENOME
