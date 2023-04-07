@@ -52,7 +52,6 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	python ./hg19translation.py | sort -V -k1,1 -k2,2n -k3,3n | awk -v OFS='\t' ' { print $1":"$2"-"$3, $4, $5, $6, $7, $8 } ';
 	} > $OUTFILE
 	
-	tabix -b 1 -e 3 -S 0 -0
 	ensureIndexed $OUTFILE
 	
 	rm $TEMP_FILE
