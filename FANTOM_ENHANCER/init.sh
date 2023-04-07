@@ -20,9 +20,8 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
 	downloadSourceFile $URL $TEMP_FILE
 
-	{
+   	{
 	echo '#CHROM	START	END	ENHANCERID	SCORE	STRAND';
-	#(columns 1-6 as chromosome, start coordinate, end coordinate, enhancer ID, score and strand)
 	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, $3, $4, $5, $6 } ' | sort -V -k1,1 -k2,2n -k6,6;
 	} > $OUTFILE
 	
