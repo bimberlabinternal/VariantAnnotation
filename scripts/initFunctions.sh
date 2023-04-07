@@ -7,6 +7,10 @@ set -u
 # This is the path of this script:
 SCRIPT_DIR=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 DONE_FILE=processingDone.txt
+if [[ -e $DONE_FILE && ${FORCE_REPROCESS:=0} == 1 ]];then
+	echo "FORCE_REPROCESS=$FORCE_REPROCESS, deleting existing "$DONE_FILE
+	rm $DONE_FILE
+fi
 
 # NOTE: if the environment variable N_THREADS is defined (which should be an integer), then it will be passed to sort
 if [[ ! -v N_THREADS ]];then
@@ -127,11 +131,6 @@ createConfigFile() {
 }
 
 isProcessingCompleted() {
-	if [[ -e $DONE_FILE && ${FORCE_REPROCESS:=0} == 1 ]];then
-		echo "FORCE_REPROCESS=$FORCE_REPROCESS, deleting existing "$DONE_FILE
-		rm $DONE_FILE
-	fi
-	
 	if [[ -e $DONE_FILE ]];then
 		echo 1
 	else

@@ -19,3 +19,5 @@ for DIR in */;do
 		cd ../
 	fi
 done
+
+echo 'Done'
