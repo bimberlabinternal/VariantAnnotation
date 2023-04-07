@@ -29,7 +29,7 @@ hg37="https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/405/GCF_000001405.25_
 
 GENOME=hg19
 TEMP_FILE=genemap2.txt
-OUTFILE=./$GENOME/omim.txt
+OUTFILE=./$GENOME/omim.table
 GFF=GCF_000001405.25_GRCh37.p13_genomic.gff.gz
 NAME=omim
 
@@ -48,7 +48,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	wget -q -O $GFF $hg37
 	
 	{
- 	echo '#HEADER	ENSEMBLEGENE	ENSEMBLEID	MIMNUMBER	GENESYMBOL	PHENOTYPES';  	
+ 	echo 'HEADER	ENSEMBLEGENE	ENSEMBLEID	MIMNUMBER	GENESYMBOL	PHENOTYPES';  	
 	python ./hg19translation.py | sort -V -k1,1 -k2,2n -k3,3n | awk -v OFS='\t' ' { print $1":"$2"-"$3, $4, $5, $6, $7, $8 } ';
 	} > $OUTFILE
 	
