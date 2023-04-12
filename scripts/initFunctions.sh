@@ -55,7 +55,7 @@ downloadSourceFile() {
 	URL=$1
 	WGET_OUT=$2
 	
-	if [[ -z ${ALLOW_DATASOURCE_REUSE:=} && -e $WGET_OUT ]];then
+	if [[ ${ALLOW_DATASOURCE_REUSE:=0} == 1 && -e $WGET_OUT ]];then
 		echo 'Re-using existing file: '$WGET_OUT
 		return
 	fi
