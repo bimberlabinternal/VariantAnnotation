@@ -4,7 +4,7 @@ set -e
 set -x
 
 # This will let the init scripts re-use previously downloaded files:
-export ALLOW_DATASOURCE_REUSE=0
+#export ALLOW_DATASOURCE_REUSE=0
 
 # This can be set to increase threads
 #export N_THREADS=8
