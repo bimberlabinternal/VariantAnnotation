@@ -21,7 +21,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	
 	{
 	echo '#CHROM	START	END	INFO';
-	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, $3, "["$9"]" } ' | sort -V -k1,1 -k2,2n;
+	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, $3, $9 } ' | sort -V -k1,1 -k2,2n;
 	} > $OUTFILE
 
 	ensureIndexed $OUTFILE

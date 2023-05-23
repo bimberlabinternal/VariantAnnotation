@@ -26,7 +26,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 
 	{
 	echo '#CHROM	START	END	GENE_INFO';
-	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, $3, "["$4"]" } ' | sort -V -k1,1 -k2,2n -k3,3n;
+	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, $3, $4 } ' | sort -V -k1,1 -k2,2n -k3,3n;
 	} > $OUTFILE
 	
 	ensureIndexed $OUTFILE
