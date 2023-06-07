@@ -48,8 +48,8 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	wget -q -O $GFF $hg37
 	
 	{
- 	echo 'HEADER	ENSEMBLEGENE	ENSEMBLEID	MIMNUMBER	GENESYMBOL	PHENOTYPES';  	
-	python ./hg19translation.py | sort -V -k1,1 -k2,2n -k3,3n | awk -F'\t' -v OFS='\t' ' { print $1":"$2"-"$3, $4, $5, $6, $7, $8 } ';
+ 	echo 'HEADER	CONTIG	START	END	ENSEMBLEGENE	ENSEMBLEID	MIMNUMBER	GENESYMBOL	PHENOTYPES';  	
+	python ./hg19translation.py | sort -V -k1,1 -k2,2n -k3,3n | awk -F'\t' -v OFS='\t' ' { print $1":"$2"-"$3, $1, $2, $3, $4, $5, $6, $7, $8 } ';
 	} > $OUTFILE
 	
 	ensureIndexed $OUTFILE
@@ -60,4 +60,4 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	touch $DONE_FILE
 fi
 
-createConfigFileForBed $NAME $GENOME $OUTFILE
+createConfigFileForTable $NAME $GENOME $OUTFILE

@@ -12,7 +12,7 @@ source ${SCRIPT_DIR}/initFunctions.sh
 GENOME=hg19
 REPORT_FILE=hg37Report.txt
 
-OUTFILE_VERT=./$GENOME/phylop_vert.bed
+OUTFILE_VERT=./$GENOME/phylop_vert.table
 NAME_VERT=phylop_vert
 
 if [[ `isProcessingCompleted` == 0 ]];then
@@ -25,8 +25,8 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	wget -q -O $REPORT_FILE https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.14_GRCh37.p13/GCA_000001405.14_GRCh37.p13_assembly_report.txt
 	
 	{
- 	echo '#CHROM	START	END	PHYLOP_VERT';
-	python ./hg19translation.py $VERT_TEMP | sort -V -k1,1 -k2,2n -k3,3n | awk -v OFS='\t' ' { print $1, $2-1, $3, $5 } ';
+ 	echo 'HEADER	CHROM	START	END	PHYLOP_VERT';
+	python ./hg19translation.py $VERT_TEMP | sort -V -k1,1 -k2,2n -k3,3n | awk -v OFS='\t' ' { print $1":"$2"-"$3, $1, $2, $3, $5 } ';
 	} > $OUTFILE_VERT
 	
 	ensureIndexed $OUTFILE_VERT
@@ -37,6 +37,6 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	touch $DONE_FILE
 fi
 
-createConfigFileForBed $NAME_VERT $GENOME $OUTFILE_VERT
+createConfigFileForTable $NAME_VERT $GENOME $OUTFILE_VERT
 
 

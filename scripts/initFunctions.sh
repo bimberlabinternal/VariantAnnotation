@@ -110,7 +110,7 @@ ensureIndexed() {
 	fi
 }
 
-createConfigFileForBed() {
+createConfigFileForTable() {
 	createConfigFile $1 $2 $3 'locatableXSV'
 }
 

@@ -17,15 +17,15 @@ source ${SCRIPT_DIR}/initFunctions.sh
 cd ERB/
 GENOME=hg19
 TEMP_FILE=ERB_summary.bed.gz
-OUTFILE=./$GENOME/ERBSUM.bed
+OUTFILE=./$GENOME/ERBSUM.table
 NAME=ERBSUM
 
 if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
 
 	{
-	echo '#CHROM	START	END	INFO';
-	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, $3, $5 } ' | sort -V -k1,1 -k2,2n -k3,3n;
+	echo 'HEADER	CHROM	START	END	INFO';
+	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1":"$2+1"-"$3, $1, $2+1, $3, $5 } ' | sort -V -k1,1 -k2,2n -k3,3n;
 	} > $OUTFILE
 
 	ensureIndexed $OUTFILE
@@ -33,7 +33,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	touch $DONE_FILE
 fi
 
-createConfigFileForBed $NAME $GENOME $OUTFILE
+createConfigFileForTable $NAME $GENOME $OUTFILE
 
 cd ../
 cp -r ERB ../

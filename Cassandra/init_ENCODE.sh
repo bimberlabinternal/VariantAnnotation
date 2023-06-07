@@ -18,15 +18,15 @@ cd ENCODE
 
 GENOME=hg19
 TEMP_FILE=wgEncodeRegDnaseClusteredV2.bed.gz
-OUTFILE=./$GENOME/ENCODE.bed
+OUTFILE=./$GENOME/ENCODE.table
 NAME=ENCODE
 
 if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
 
 	{
-	echo '#CHROM	START	END	DNASECLUST';
-	zcat $TEMP_FILE | grep -v '#' | grep -v "CHR" | awk -F'\t' -v OFS='\t' ' { print $1, $2, $3, $4 } ';
+	echo 'HEADER	CHROM	START	END	DNASECLUST';
+	zcat $TEMP_FILE | grep -v '#' | grep -v "CHR" | awk -F'\t' -v OFS='\t' ' { print $1":"$2+1"-"$3, $1, $2+1, $3, $4 } ';
 	} > $OUTFILE
 	
 	ensureIndexed $OUTFILE
@@ -34,7 +34,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	touch $DONE_FILE
 fi
 
-createConfigFileForBed $NAME $GENOME $OUTFILE
+createConfigFileForTable $NAME $GENOME $OUTFILE
 
 cd ../
 cp -r ENCODE ../

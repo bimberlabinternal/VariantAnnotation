@@ -13,7 +13,7 @@ source ${SCRIPT_DIR}/initFunctions.sh
 URL="https://fantom.gsc.riken.jp/5/datafiles/latest/extra/Enhancers/human_permissive_enhancers_phase_1_and_2.bed.gz"
 GENOME=hg19
 TEMP_FILE=human_permissive_enhancers_phase_1_and_2.bed.gz
-OUTFILE=./$GENOME/FantomEnhancer.bed
+OUTFILE=./$GENOME/FantomEnhancer.table
 NAME=FANTOM_ENHANCER
 
 if [[ `isProcessingCompleted` == 0 ]];then
@@ -21,8 +21,8 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	downloadSourceFile $URL $TEMP_FILE
 
    	{
-	echo '#CHROM	START	END	ENHANCERID	SCORE	STRAND';
-	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, $3, $4, $5, $6 } ' | sort -V -k1,1 -k2,2n -k6,6;
+	echo 'HEADER	CHROM	START	END	ENHANCERID	SCORE	STRAND';
+	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1":"$2+1"-"$3, $1, $2+1, $3, $4, $5, $6 } ' | sort -V -k1,1 -k2,2n -k6,6;
 	} > $OUTFILE
 	
 	ensureIndexed $OUTFILE
@@ -30,4 +30,4 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	touch $DONE_FILE
 fi
 
-createConfigFileForBed $NAME $GENOME $OUTFILE
+createConfigFileForTable $NAME $GENOME $OUTFILE

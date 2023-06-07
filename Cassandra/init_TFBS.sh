@@ -18,15 +18,15 @@ cd TFBS
 
 GENOME=hg19
 TEMP_FILE=TFBS.summary.bed.gz
-OUTFILE=./$GENOME/TFBS.bed
+OUTFILE=./$GENOME/TFBS.table
 NAME=TFBS
 
 if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
 
 	{
-	echo '#CHROM	START	END	GENE_INFO';
-	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, $3, $4 } ' | sort -V -k1,1 -k2,2n -k3,3n;
+	echo 'HEADER	CHROM	START	END	GENE_INFO';
+	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1":"$2+1"-"$3, $1, $2+1, $3, $4 } ' | sort -V -k1,1 -k2,2n -k3,3n;
 	} > $OUTFILE
 	
 	ensureIndexed $OUTFILE
@@ -34,7 +34,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	touch $DONE_FILE
 fi
 
-createConfigFileForBed $NAME $GENOME $OUTFILE
+createConfigFileForTable $NAME $GENOME $OUTFILE
 cd ../
 cp -r TFBS ../
 

@@ -40,6 +40,7 @@ vignettes/*.pdf
 
 *.vcf
 *.vcf.gz
+*.table
 *.config
 *.bed
 *.gz
