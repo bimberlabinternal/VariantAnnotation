@@ -26,7 +26,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	
 	{
  	echo 'HEADER	CHROM	START	END	PHYLOP_PLACENTAL';
-	python ./hg19translation.py $PLACENTAL_TEMP | sort -V -k1,1 -k2,2n -k3,3n | awk -v OFS='\t' ' { print $1":"$2"-"$3, $1, $2, $3, $5 } ';
+	python ./hg19translation.py $PLACENTAL_TEMP | sort -V -k1,1 -k3,3n | awk -v OFS='\t' ' { print $1":"$3"-"$3, $1, $3, $3, $5 } ';
 	} > $OUTFILE_PLACENTAL
 	
 	ensureIndexed $OUTFILE_PLACENTAL
