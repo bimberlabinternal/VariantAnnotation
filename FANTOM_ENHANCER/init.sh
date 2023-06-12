@@ -22,7 +22,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 
    	{
 	echo 'HEADER	CHROM	START	END	ENHANCERID	SCORE	STRAND';
-	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1":"$2+1"-"$3, $1, $2+1, $3, $4, $5, $6 } ' | sort -V -k1,1 -k2,2n -k6,6;
+	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1":"$2+1"-"$3, $1, $2+1, $3, $4, $5, $6 } ' | sort -V -k2,2 -k3,3n -k4,4n;
 	} > $OUTFILE
 	
 	ensureIndexed $OUTFILE
