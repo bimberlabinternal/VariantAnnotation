@@ -22,8 +22,8 @@ if [[ `isProcessingCompleted` == 0 ]];then
 
 	{
 	echo 'HEADER	CONTIG	START	END	ERB_TYPE';  	
-	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1":"$4"-"$5, $1, $4, $5, $3 } ';
-	} | sort -V -k2,2 -k3,3n -k4,4 > $OUTFILE
+	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1":"$4"-"$5, $1, $4, $5, $3 } ' | sort -V -k2,2 -k3,3n -k4,4;
+	} > $OUTFILE
 	
 	ensureIndexed $OUTFILE
 	rm $TEMP_FILE
