@@ -22,7 +22,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 
 	{
 	echo '##fileformat=VCFv4.2';
-	echo '##INFO=<ID=CAPICE,Number=A,Type=Float,Description="This is the capice score">';
+	echo '##INFO=<ID=CAPICE,Number=A,Type=Float,Description="Contains precomputed scores for InDels in genome build 37">';
 	echo '#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO';
 	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, ".", $3, $4, ".", "PASS", "CAPICE="$5 } ';
 	} | bgzip --threads $N_THREADS > $OUTFILE
