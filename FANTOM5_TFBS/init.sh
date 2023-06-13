@@ -36,7 +36,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	{
 	echo 'HEADER	CONTIG	START	END	TF	STRAND	SCORE';  	
 	bzcat $file | grep -v '#' | grep -v '^chrom' | sed 's/^chr//' | awk -F'\t' -v OFS='\t' ' { split($4,tf,";"); print $1":"$2+1"-"$3, $1, $2+1, $3, tf[1], $6, $5 } ';
-	} | sort -V k2,2 -k3,3n -k4,4n | bgzip --threads $N_THREADS > $OUTFILE
+	} | sort -V k2,2 -k3,3n -k4,4n > $OUTFILE
 	
 	ensureIndexed $OUTFILE
 	rm -Rf $OUTDIR
