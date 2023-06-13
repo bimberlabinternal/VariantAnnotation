@@ -24,6 +24,9 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	
 	mkdir $OUTDIR
 	
+	TMP_FILE=FANTOM5_TFBS.table.tmp
+	truncate -s 0 $TMP_FILE
+	
 	URL_BASE=https://fantom.gsc.riken.jp/5/datafiles/phase1.3/extra/Motifs/TFBS/
 	for file in $(curl -s $URL_BASE |
                   grep 'hg19' |
@@ -31,14 +34,17 @@ if [[ `isProcessingCompleted` == 0 ]];then
                   sed 's/.*href="//' |
                   sed 's/".*//'); do
 		downloadSourceFile ${URL_BASE}$file ${OUTDIR}/$file
+		bzcat ${OUTDIR}/$file | grep -v '#' | grep -v '^chrom' | sed 's/^chr//' | awk -F'\t' -v OFS='\t' ' { split($4,tf,";"); print $1":"$2+1"-"$3, $1, $2+1, $3, tf[1], $6, $5 } ' >> $TMP_FILE
 	done
 
 	{
 	echo 'HEADER	CONTIG	START	END	TF	STRAND	SCORE';  	
-	bzcat $file | grep -v '#' | grep -v '^chrom' | sed 's/^chr//' | awk -F'\t' -v OFS='\t' ' { split($4,tf,";"); print $1":"$2+1"-"$3, $1, $2+1, $3, tf[1], $6, $5 } ' | sort -V k2,2 -k3,3n -k4,4n;
+	cat $TMP_FILE | sort -V k2,2 -k3,3n -k4,4n;
 	} > $OUTFILE
 	
 	ensureIndexed $OUTFILE
+	
+	rm $TMP_FILE
 	rm -Rf $OUTDIR
 	
 	touch $DONE_FILE
