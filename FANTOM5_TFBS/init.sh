@@ -39,7 +39,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 
 	{
 	echo 'HEADER	CONTIG	START	END	TF	STRAND	SCORE';  	
-	cat $TMP_FILE | sort -V k2,2 -k3,3n -k4,4n;
+	cat $TMP_FILE | sort -V -k2,2 -k3,3n -k4,4n;
 	} > $OUTFILE
 	
 	ensureIndexed $OUTFILE
