@@ -39,7 +39,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	} | sort -V k2,2 -k3,3n -k4,4n | bgzip --threads $N_THREADS > $OUTFILE
 	
 	ensureIndexed $OUTFILE
-	rm $TEMP_FILE
+	rm -Rf $OUTDIR
 	
 	touch $DONE_FILE
 fi
