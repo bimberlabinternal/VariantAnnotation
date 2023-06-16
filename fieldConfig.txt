@@ -1,0 +1,102 @@
+DataSource	SourceField	ID	    Number 	Type  	Label	 Description	Category	URL
+FATHMM_MKL	F_NC	FATHMM_NonCodingScore	A	Float	FATHMM Non-Coding Score	This is the fathmm-MKL noncoding score, which is a prediction of the functional consequence of the variant. Predictions are given as p-values in the range [0, 1]: values above 0.5 are predicted to be deleterious, while those below 0.5 are predicted to be neutral or benign. P-values close to the extremes (0 or 1) are the highest-confidence predictions that yield the highest accuracy	Comparative Genomics	http://fathmm.biocompute.org.uk/
+FATHMM_MKL	F_NCG	FATHMM_NonCodingGroup	A	String		These are the functional groups defined by the fathmm-MKL non-coding score, indicating the categories of functional consequence. See the fanthamm paper for their meanings	Comparative Genomics	http://fathmm.biocompute.org.uk/
+FATHMM_MKL	F_C	FATHMM_SCORE	A	Float	FATHMM Score	This is the fathmm-MKL coding score, which is a prediction of the functional consequence of the variant. Predictions are given as p-values in the range [0, 1]: values above 0.5 are predicted to be deleterious, while those below 0.5 are predicted to be neutral or benign. P-values close to the extremes (0 or 1) are the highest-confidence predictions that yield the highest accuracy	Comparative Genomics	http://fathmm.biocompute.org.uk/
+FATHMM_MKL	F_CG	FATHMM_CodingGroup	A	String		These are the functional groups defined by the fathmm-MKL coding score, indicating the categories of functional consequence. See the fanthamm paper for their meanings	Comparative Genomics	http://fathmm.biocompute.org.uk/
+cadd	CADD_PH	CADD_PHRED_Quality	A	Float	CADD Score	CADD phred score-measure of dna sequnce quality	Genes and Gene Predictions	https://cadd.gs.washington.edu/
+capice	CAPICE	CAPICE_Score	A	Float	CAPICE Score	contains the precomputed scores for InDels in genome build 37	Genes and Gene Predictions	https://github.com/molgenis/capice
+Clinpred	ClinPredScore	ClinPredScore	A	Float	ClinPred Score	pre-computed ClinPred scores for all possible human missense variants in the exome	Genes and Gene Predictions	https://pubmed.ncbi.nlm.nih.gov/30220433/
+ExACpLl	AC	ExACpLl_AlleleCount	A	String		Allele count in genotypes, for each ALT allele, in the same order as listed	Comparative Genomics	TBA
+ExACpLl	AC_AMR	ExACpLl_AlleleCount_AMR	A	String		American Allele Counts	Comparative Genomics	TBA
+ExACpLl	AC_AFR	ExACpLl_AlleleCount_AFR	A	String		Adjusted allele counts	Comparative Genomics	TBA
+ExACpLl	AC_EAS	ExACpLl_AlleleCount_EAS	A	String		East asian allele counts	Comparative Genomics	TBA
+ExACpLl	AC_FIN	ExACpLl_AlleleCount_FIN	A	String		Finnish allele counts	Comparative Genomics	TBA
+ExACpLl	AC_Hemi	ExACpLI_Adjusted_Hemizygous_Counts	A	String	ExACpLI Adjusted Hemizygous Counts	Adjusted Hemizygous Counts	Comparative Genomics	TBA
+ExACpLl	AC_Het	ExACpLI_Adjusted_Heterozygous_Counts	A	String	ExACpLI Adjusted Heterozygous Counts	Adjusted Heterozygous Counts	Comparative Genomics	TBA
+ExACpLl	AC_Hom	ExACpLI_Adjusted_Homozygous_Counts	A	String	ExACpLI Adjusted Homozygous Counts	Adjusted Homozygous Counts	Comparative Genomics	TBA
+ExACpLl	AC_NFE	ExACpLl_AlleleCount_NFE	A	String	ExACpLl AlleleCount NFE	Non-Finnish European Allele Counts	Comparative Genomics	TBA
+ExACpLl	AC_OTH	ExACpLl_AlleleCount_OTH	A	String	ExACpLl AlleleCount OTH	Other Allele Counts	Comparative Genomics	TBA
+ExACpLl	AC_SAS	ExACpLl_AlleleCount_SAS	A	String	ExACpLl AlleleCount SAS	South Asian Allele Counts	Comparative Genomics	TBA
+ExACpLl	AF	ExACpLI_AF	A	String	ExACpLI AF	Allele Frequency, for each ALT allele, in the same order as listed	Comparative Genomics	TBA
+ExACpLl	AN	TotalAlleles	A	Float	Total Alleles	Total number of alleles in called genotypes	Comparative Genomics	TBA
+ExACpLl	AN_AFR	ExACpLI_AN_AFR	A	String	ExACpLI AN AFR	African/African American Chromosome Count	Comparative Genomics	TBA
+ExACpLl	AN_AMR	ExACpLI_AN_AMR	A	String	ExACpLI AN AMR	American Chromosome Count	Comparative Genomics	TBA
+ExACpLl	AN_Adj	ExACpLI_AN_Adj	A	String	ExACpLI AN Adj	Adjusted Chromosome Count	Comparative Genomics	TBA
+ExACpLl	AN_EAS	ExACpLI_AN_EAS	A	String	ExACpLI AN EAS	East Asian Chromosome Count	Comparative Genomics	TBA
+ExACpLl	AN_FIN	ExACpLI_AN_FIN	A	String	ExACpLI AN FIN	Finnish Chromosome Count	Comparative Genomics	TBA
+ExACpLl	AN_NFE	ExACpLI_AN_NFE	A	String	ExACpLI AN NFE	Non-Finnish European Chromosome Count	Comparative Genomics	TBA
+ExACpLl	AN_OTH	ExACpLI_AN_OTH	A	String	ExACpLI AN OTH	Other Chromosome Count	Comparative Genomics	TBA
+ExACpLl	AN_SAS	ExACpLI_AN_SAS	A	String	ExACpLI AN SAS	South Asian Chromosome Count	Comparative Genomics	TBA
+ExACpLl	BaseQRankSum	BaseQRankSum	A	Float	Base Q Rank Sum	Z-score from Wilcoxon rank sum test of Alt Vs. Ref base qualities	Comparative Genomics	TBA
+ExACpLl	CCC	NumCalledChromosomes	A	String	Number of  Called Chromosomes	Number of called chromosomes	Comparative Genomics	TBA
+ExACpLl	ClippingRankSum	ClippingRankSum	A	String	Clipping Rank Sum	Z-score From Wilcoxon rank sum test of Alt vs. Ref number of hard clipped bases	Comparative Genomics	TBA
+ExACpLl	DB	dbSNP_Membership	A	Float	dbSNP Membership	dbSNP Membership	Comparative Genomics	TBA
+ExACpLl	BP	ReadDepth	A	String	Read Depth	Approximate read depth; some reads may have been filtered	Comparative Genomics	TBA
+ExACpLl	DS	ExACpLI_DS	A	String	ExACpLI DS	Were any of the samples downsampled?	Comparative Genomics	TBA
+ExACpLl	END	ExACpLl_END	A	String	ExACpLl END	Stop position of the interval	Comparative Genomics	TBA
+ExACpLl	FS	FishersExactStrandBias	A	Float	Fishers Exact Strand Bias	Phred-scaled p-value using Fisher's exact test to detect strand bias	Comparative Genomics	TBA
+ExACpLl	GQ_MEAN	GQ_MEAN	A	Float	GQ MEAN	Mean of all GQ values	Comparative Genomics	TBA
+ExACpLl	GQ_STDD	GQ_STDD	A	Float	GQ STDD	Standard deviation of all GQ values	Comparative Genomics	TBA
+ExACpLl	HWP	ExACpLl_HardyWienburg	A	Float	ExACpLl Hardy Wienburg	P value from test of Hardy Weinberg Equilibrium	Comparative Genomics	TBA
+ExACpLl	HaplotypeScore 	HaplotypeScore 	A	String	Haplotype Score 	Consistency of the site with at most two segregating haplotypes	Comparative Genomics	TBA
+ExACpLl	Hemi_AFR 	ExACpLI_Hemi_AFR 	A	String	ExACpLI Hemi AFR 	African/African American Hemizygous Counts	Comparative Genomics	TBA
+ExACpLl	Hemi_AMR	ExACpLI_Hemi_AMR	A	String	ExACpLI Hemi AMR	American Hemizygous Counts	Comparative Genomics	TBA
+ExACpLl	Hemi_EAS 	ExACpLI_Hemi_EAS 	A	String	ExACpLI Hemi EAS 	East Asian Hemizygous Counts	Comparative Genomics	TBA
+StructuralVariantOverlap	TSD	TargetSiteDuplication	A	String	Target Site Duplication	Precise Target Site Duplication for bases, if unknown, value will be NULL	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	SVTYPE	SVTYPE	A	String	SV TYPE	Type of structural variant	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	MSTART	MitoC_START	A	String	MitoC START	Mitochondrial start coordinate of inserted sequence	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	MLEN	Mito_LEN	A	String	Mito LEN	Estimated length of mitochondrial insert	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	MEND	Mito_END	A	String	Mito END	Mitochondrial end coordinate of inserted sequence	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	MEINFO	MobileElementINFO	A	String	Mobile Element INFO	Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	SVLEN	RefAltDiff	A	String	Ref Alt Difference	Difference in length between REF and ALT alleles	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	SIMPRECISE	StracturalVariantionIMPRECISE	A	String	Stractural Variantion IMPRECISE	Imprecise structural variation	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	CIEND	CI_END	A	String	CI END	Confidence interval around END for imprecise variants	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	CIPOS	CI_POS	A	String	CI POS	Confidence interval around POS for imprecise variants	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	END	END	A	String	END	End coordinate of this variant	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	CS	CallSet	A	String	CallSet	Source call set.	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	MC	MergedCalls	A	String	Merged Calls	Merged calls.	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	AF	SVOverlap_AF	A	String	SV Overlap AF	Estimated allele frequency in the range (0,1)	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	NS	NumberSamples	A	String	Number Samples	Number of samples with data	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	EAS_AF	SVOverlap_EAS_AF	A	String		Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	EUR_AF	SVOverlap_EUR_AF	A	String		Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	AFR_AF	SVOverlap_AFR_AF	A	String		Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	AMR_AF	SVOverlap_AMR_AF	A	String		Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	SAS_AF	SVOverlap_SAS_AF	A	String		Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+StructuralVariantOverlap	SITEPOST	SiteMedPosteriorProb	A	String		Site Median posterior probability from MVNcall.	Comparative Genomics	ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/integrated_sv_map/ALL.wgs.mergedSV.v8.20130502.svs.genotypes.vcf.gz
+ARIC	ARIC	ARIC_score	A	Float		allele frequency from particpants in ARIC cohort study related to cardiovascular health	Genes and Gene Predictions	https://sites.cscc.unc.edu/aric/
+DBSCSNV 	DBSCSNV 	DBSCSNV_splicingConsensus	A	Float		 damaging prediction for SNVs in splicing consensus region	Genes and Gene Predictions	http://www.liulab.science/dbscsnv.html
+FANTOM_ENHANCER	ENHANCERID	FANTOM_ENHANCERID	UNBOUNDED	String		FANTOM ENHANCER ID 	Genes and Gene Predictions	TBA
+FANTOM_ENHANCER	SCORE	FANTOM_SCORE	UNBOUNDED	String		URL="https://fantom.gsc.riken.jp/5/datafiles/latest/extra/Enhancers/human_permissive_enhancers_phase_1_and_2.bed.gz"	Genes and Gene Predictions	TBA
+FANTOM_ENHANCER	STRAND	STRAND	UNBOUNDED	String		add	Genes and Gene Predictions	TBA
+ENCODE	DNASECLUST	DNASE1_hypersinsitivitysite	UNBOUNDED	String		DNASE1 hypersensitivity sites provided by ENCODE.	Genes and Gene Predictions	TBA
+GRASP	GRASP	GRASP_phenotypePvalue	A	String		 Analysis of genotype p value for strength of phenotype association.	Genes and Gene Predictions	TBA
+phylop_placental	PHYLOP_PLACENTAL	phylopPlacentalSCORE	UNBOUNDED	String		 Phylop conservation scores PhyloP basewise conservation score derived from Multiz alignment of 46 vertebrate  species. This series includes two SGA files, one for all vertebrates and one for placental mammals only. 	Comparative Genomics	"https://ccg.epfl.ch/mga/hg19/phylop/phylop_placental.sga.gz 
+"
+phylop_vert	PHYLOP_VERT	PHYLOPVertScore	UNBOUNDED	String		 Phylop conservation scores PhyloP basewise conservation score derived from Multiz alignment of 46 vertebrate species. This series includes two SGA files, one for all vertebrates and one for vertabrates. 	Comparative Genomics	TBA
+Siphy	LODSCORE	LODSCORE	A	Float		 Detects bases under selection.#    Theoretical chis-sequared p-value of the obtained log-odds ratio.	Genes and Gene Predictions	www.broadinstitute.org/ftp/pub/assemblies/mammals/29mammals/hg19/hg19_29way_omega_lods_elements_12mers.chr_specific.fdr_0.1_with_scores.txt.gz
+Siphy	BranchLength	BranchLength	A	String		 Detects bases under selection.reports the branch length of the 29 mamals with omega lods elements and fdr of .01 to compute branch lengths	Genes and Gene Predictions	TBA
+dbSNP	RS	RS_dbSNP_ID	A	String		dbSNP ID (i.e. rs number)	Variation and Repeats	TBA
+dbSNP	RSPOS	CHR_POS	A	String		Chr position reported in dbSNP	Variation and Repeats	TBA
+dbSNP	RV	ReverseStrand	A	String		RS orientation is reversed	Variation and Repeats	TBA
+dbSNP	VP	VariationProperty	A	String		Variation Property.  Documentation is at ftp://ftp.ncbi.nlm.nih.gov/snp/specs/dbSNP_BitField_latest.pdf	Variation and Repeats	TBA
+dbSNP	GENEINFO	GENEINFO	A	String		Pairs each of gene symbol:gene id.  The gene symbol and id are delimited by a colon (:) and each pair is delimited by a vertical bar (|)"	Variation and Repeats	TBA
+dbSNP	dbSNPBUildID	dbSNPBUildID	A	String		First dbSNP Build for RS"	Variation and Repeats	TBA
+dbSNP	SAO	VariantAlleleOrigin	A	String		Variant Allele Origin: 0 - unspecified, 1 - Germline, 2 - Somatic, 3 - Both"	Variation and Repeats	TBA
+dbSNP	SSR	SSR	A	String		Variant Suspect Reason Codes (may be more than one value added together) 0 - unspecified, 1 - Paralog, 2 - byEST, 4 - oldAlign, 8 - Para_EST, 1 6 - 1kg_failed, 1024 - other	Variation and Repeats	TBA
+dbSNP	WGT	Weight	A	String		Weight, 00 - unmapped, 1 - weight 1, 2 - weight 2, 3 - weight 3 or more"	Variation and Repeats	TBA
+dbSNP	VC	VariantClass	A	String		Variation Class"	Variation and Repeats	TBA
+dbSNP	PM	PubMed	A	String		Variant is Precious(Clinical,Pubmed Cited)"	Variation and Repeats	TBA
+dbSNP	TPA	ThridPartyAnn	A	String		Provisional Third Party Annotation(TPA) (currently rs from PHARMGKB who will give phenotype data)"	Variation and Repeats	TBA
+dbSNP	PMC	PubMedLink	A	String		Links exist to PubMed Central article"	Variation and Repeats	TBA
+dbSNP	S3D	Has3DStructure	A	String		Has 3D structure - SNP3D table"	Variation and Repeats	TBA
+dbSNP	SLO	SubmitterLinkOut	A	String		Has SubmitterLinkOut - From SNP-SubSNP-Batch.link_out"	Variation and Repeats	TBA
+dbSNP	NSF	NonSynFramshift	A	String		Has non-synonymous frameshift A coding region variation where one allele in the set changes all downstream amino acids. FxnClass = 44	Variation and Repeats	TBA
+dbSNP	NSM	NonSynMissense	A	String		Has non-synonymous missense A coding region variation where one allele in the set changes protein peptide. FxnClass = 42	Variation and Repeats	TBA
+dbSNP	NSN	NonSynNonsense	A	String		Has non-synonymous nonsense A coding region variation where one allele in the set changes to STOP codon (TER). FxnClass = 41	Variation and Repeats	TBA
+dbSNP	REF	REFhasIdentical	A	String		Has reference A coding region variation where one allele in the set is identical to the reference sequence. FxnCode = 8	Variation and Repeats	TBA
+dbSNP	SYN	SYN_codingVariation	A	String		Has synonymous A coding region variation where one allele in the set does not change the encoded amino acid. FxnCode = 3	Variation and Repeats	TBA
+dbSNP	U3	3UTR	A	String		In 3' UTR Location is in an untranslated region (UTR). FxnCode = 53	Variation and Repeats	TBA
+dbSNP	U5	5UTR	A	String		In 5' UTR Location is in an untranslated region (UTR). FxnCode = 55	Variation and Repeats	TBA
+dbSNP	ASS	AcceptorSpliceSite	A	String		In acceptor splice site FxnCode = 73	Variation and Repeats	TBA
+dbSNP	DSS	DonorSpliceSite	A	String		In donor splice-site FxnCode = 75	Variation and Repeats	TBA
+dbSNP	INT	INTON	A	String		In Intron FxnCode = 6	Variation and Repeats	TBA
