@@ -24,7 +24,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	echo '##fileformat=VCFv4.2';
 	echo '##INFO=<ID=FS2,Number=A,Type=Float,Description="The funseq2 score">';
 	echo '#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO';
-	zcat $TEMP_FILE | grep -v '#' | sed 's/^chr//' | awk -F'\t' -v OFS='\t' ' { print $1, $2, $3, $4, ".", "PASS", "FS2="$5 } ';
+	zcat $TEMP_FILE | grep -v '#' | sed 's/^chr//' | awk -F'\t' -v OFS='\t' ' { print $1, ".", $2, $3, $4, ".", "PASS", "FS2="$5 } ';
 	} | bgzip --threads $N_THREADS > $OUTFILE
 	
 	ensureIndexed $OUTFILE
