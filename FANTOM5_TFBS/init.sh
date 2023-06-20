@@ -12,7 +12,7 @@ source ${SCRIPT_DIR}/initFunctions.sh
 # The purpose of this script is to download conservation data from the web, and reformat as needed.
 GENOME=hg19
 OUTFILE=./$GENOME/FANTOM5_TFBS.table
-NAME=ERB
+NAME=FANTOM5_TFBS
 
 if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
