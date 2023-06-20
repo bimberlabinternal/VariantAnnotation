@@ -15,10 +15,14 @@ fi
 
 source ${SCRIPT_DIR}/initFunctions.sh
 
+if [[ `isProcessingCompleted` == 0 ]];then
+	exit 0
+fi
+
 $GATK FuncotatorDataSourceDownloader --somatic --validate-integrity --extract-after-download
 $GATK FuncotatorDataSourceDownloader --germline --validate-integrity --extract-after-download
 
 cp -r funcotator_dataSources.v1.7.20200521g/* ../
 cp -r funcotator_dataSources.v1.7.20200521s/* ../
 
-
+touch $DONE_FILE
