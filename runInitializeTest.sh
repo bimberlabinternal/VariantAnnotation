@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+set -x
 
 # This script can be used to sanity-check the data source downloads
 export DOWNLOAD_LINE_LIMIT=1000
