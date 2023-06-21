@@ -19,8 +19,19 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	exit 0
 fi
 
-$GATK FuncotatorDataSourceDownloader --somatic --validate-integrity --extract-after-download
-$GATK FuncotatorDataSourceDownloader --germline --validate-integrity --extract-after-download
+FUNCOTATOR_SOMATIC=funcotator_dataSources.v1.7.20200521s.tar.gz
+if [[ ${ALLOW_DATASOURCE_REUSE:=0} == 1 && -e $FUNCOTATOR_SOMATIC ]];then
+	echo 'Re-using existing file: '$FUNCOTATOR_SOMATIC
+else
+	$GATK FuncotatorDataSourceDownloader --somatic --validate-integrity --extract-after-download
+fi
+
+FUNCOTATOR_GERMLINE=funcotator_dataSources.v1.7.20200521g
+if [[ ${ALLOW_DATASOURCE_REUSE:=0} == 1 && -e $FUNCOTATOR_GERMLINE ]];then
+	echo 'Re-using existing file: '$FUNCOTATOR_GERMLINE
+else
+	$GATK FuncotatorDataSourceDownloader --germline --validate-integrity --extract-after-download
+fi
 
 rm -Rf funcotator_dataSources.v1.7.20200521s/gencode
 rm -Rf funcotator_dataSources.v1.7.20200521s/gencode_xhgnc
