@@ -14,9 +14,9 @@ VCF=simpleTest.vcf
 DATA_SOURCE=.
 OUTPUT=testFuncotator.vcf
 
-FASTA=genome.fasta
+FASTA=Homo_sapiens.GRCh37.75.fasta
 
-wget -O ${FASTA}.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/405/GCF_000001405.25_GRCh37.p13/GCF_000001405.25_GRCh37.p13_genomic.fna.gz
+wget -O ${FASTA}.gz https://ftp.ensembl.org/pub/release-75/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.75.dna_sm.toplevel.fa.gz
 gunzip ${FASTA}.gz
 
 samtools faidx $FASTA
@@ -32,4 +32,4 @@ gatk Funcotator \
 	--output $OUTPUT \
 	--output-file-format MAF
 
-rm genome.fasta
+rm $FASTA
