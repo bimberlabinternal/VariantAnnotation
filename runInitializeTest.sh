@@ -17,12 +17,12 @@ wget -O ${FASTA}.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/405/GCF
 gunzip ${FASTA}.gz
 
 samtools faidx -R $FASTA
-gatk CreateSequenceDictionary $FASTA
+gatk CreateSequenceDictionary -R $FASTA
 
 gatk IndexFeatureFile -I $VCF
 
 gatk Funcotator \
-	-R $FASTA
+	-R $FASTA \
 	--variant $VCF \
 	--ref-version hg19 \
 	--data-sources-path $DATA_SOURCE \
