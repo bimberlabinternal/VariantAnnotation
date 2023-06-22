@@ -15,7 +15,7 @@ fi
 
 source ${SCRIPT_DIR}/initFunctions.sh
 
-if [[ `isProcessingCompleted` == 0 ]];then
+if [[ `isProcessingCompleted` == 1 ]];then
 	exit 0
 fi
 
@@ -40,8 +40,8 @@ rm -Rf funcotator_dataSources.v1.7.20200521s/clinvar
 
 rm -Rf funcotator_dataSources.v1.7.20200521g/gencode
 
-find ./funcotator_dataSources.v1.7.20200521g type -d -exec cp -r {} ../ \;
-find ./funcotator_dataSources.v1.7.20200521s type -d -exec cp -r {} ../ \;
+find ./funcotator_dataSources.v1.7.20200521g -mindepth 1 -maxdepth 1 -type d -exec cp -r {} ../ \;
+find ./funcotator_dataSources.v1.7.20200521s -mindepth 1 -maxdepth 1 -type d -exec cp -r {} ../ \;
 
 rm -Rf funcotator_dataSources.v1.7.20200521g/
 rm -Rf funcotator_dataSources.v1.7.20200521s/
