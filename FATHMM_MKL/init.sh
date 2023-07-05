@@ -14,7 +14,7 @@ URL="http://fathmm.biocompute.org.uk/database/fathmm-MKL_Current.tab.gz"
 GENOME=hg19
 TEMP_FILE=fathmm-MKL_Current.tab.gz
 OUTFILE=./$GENOME/FATHMM.vcf.gz
-NAME=fathmm
+NAME=FATHMM_MKL
 
 if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME

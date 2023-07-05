@@ -31,7 +31,7 @@ GENOME=hg19
 TEMP_FILE=genemap2.txt
 OUTFILE=./$GENOME/omim.table
 GFF=GCF_000001405.25_GRCh37.p13_genomic.gff.gz
-NAME=omim
+NAME=Omim
 
 if [[ `isProcessingCompleted` == 0 ]];then
 	if [[ -z ${OMIM_KEY:=} ]] ;then

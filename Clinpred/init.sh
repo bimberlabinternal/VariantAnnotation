@@ -14,7 +14,7 @@ URL="https://cvmfs-hubs.vhost38.genap.ca/~alirezai/ClinPred"
 GENOME=hg19
 TEMP_FILE=Clinpred.txt
 OUTFILE=./$GENOME/ClinPred.vcf.gz
-NAME=clinpred
+NAME=Clinpred
 
 if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME

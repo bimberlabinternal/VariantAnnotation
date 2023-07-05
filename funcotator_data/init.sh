@@ -46,4 +46,6 @@ find ./funcotator_dataSources.v1.7.20200521s -mindepth 1 -maxdepth 1 -type d -ex
 rm -Rf funcotator_dataSources.v1.7.20200521g/
 rm -Rf funcotator_dataSources.v1.7.20200521s/
 
+sed -i 's/ClinVar_VCF/ClinVar/' ../clinvar/hg19/clinvar_vcf.config
+
 touch $DONE_FILE
