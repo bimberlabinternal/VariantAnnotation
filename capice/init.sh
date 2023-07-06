@@ -14,7 +14,7 @@ URL="https://zenodo.org/record/3928295/files/capice_v1.0_build37_indels.tsv.gz"
 GENOME=hg19
 TEMP_FILE=capice_v1.0_build37_indels.tsv.gz
 OUTFILE=./$GENOME/capice.vcf.gz
-NAME=capice
+NAME=Capice
 
 if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
