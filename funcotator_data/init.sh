@@ -36,16 +36,15 @@ fi
 rm -Rf funcotator_dataSources.v1.7.20200521s/gencode
 rm -Rf funcotator_dataSources.v1.7.20200521s/gencode_xhgnc
 rm -Rf funcotator_dataSources.v1.7.20200521s/gencode_xrefseq
-rm -Rf funcotator_dataSources.v1.7.20200521s/clinvar
+rm -Rf funcotator_dataSources.v1.7.20200521s/clinvar*
 
 rm -Rf funcotator_dataSources.v1.7.20200521g/gencode
+rm -Rf funcotator_dataSources.v1.7.20200521g/clinvar*
 
 find ./funcotator_dataSources.v1.7.20200521g -mindepth 1 -maxdepth 1 -type d -exec cp -r {} ../ \;
 find ./funcotator_dataSources.v1.7.20200521s -mindepth 1 -maxdepth 1 -type d -exec cp -r {} ../ \;
 
 rm -Rf funcotator_dataSources.v1.7.20200521g/
 rm -Rf funcotator_dataSources.v1.7.20200521s/
-
-sed -i 's/ClinVar_VCF/ClinVar/' ../clinvar/hg19/clinvar_vcf.config
 
 touch $DONE_FILE
