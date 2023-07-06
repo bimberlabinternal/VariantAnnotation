@@ -23,6 +23,9 @@ if [[ `isProcessingCompleted` == 0 ]];then
 
 	cp $TEMP_FILE $OUTFILE
 	cp ${TEMP_FILE}.tbi ${OUTFILE}.tbi
+	
+	rm -Rf $TEMP_FILE
+	rm -Rf ${TEMP_FILE}.tbi 
 
 	touch $DONE_FILE
 fi
