@@ -116,8 +116,8 @@ SnpSift	SnpSift/DbNsfp	SIFT_converted_rankscore	dbNSFP_SIFT_converted_rankscore	
 SnpSift	SnpSift/DbNsfp	SIFT_pred	dbNSFP_SIFT_pred	A	Float	SIFT pred	If SIFTori is smaller than 0.05 (rankscore>0.39575) the corresponding nsSNV is predicted as D(amaging); otherwise it is predicted as T(olerated).Multiple predictions separated by ;	Genes and Gene Predictions	http://provean.jcvi.org/index.php				Functional Predictions
 SnpSift	SnpSift/DbNsfp	SIFT_score	dbNSFP_SIFT_score	A	Float	SIFT score	SIFT_score: SIFT score (SIFTori). Scores range from 0 to 1. The smaller the score the more likely the SNP has damaging effect. Multiple scores separated by ;, corresponding to Ensembl_proteinid.	Genes and Gene Predictions	https://usf.app.box.com/s/6yi6huheisol3bhmld8bitcon1oi53pm				
 SnpSift	SnpSift/DbNsfp	SIFT4G_converted_rankscore	dbNSFP_SIFT4G_converted_rankscore	A	Float	SIFT4G converted rankscore	SIFT4G scores were first converted to SIFT4Gnew=1-SIFT4G, then ranked among all SIFT4Gnew scores in dbNSFP. The rankscore is the ratio of the rank the SIFT4Gnew score over the total number of SIFT4Gnew scores in dbNSFP. If there are multiple scores, only the most damaging (largest) rankscore is presented.	Genes and Gene Predictions	http://sift.bii.a-star.edu.sg/sift4g/public//Homo_sapiens/				Functional Predictions
-SnpSift	SnpSift/DbNsfp	SIFT4G_pred	dbNSFP_SIFT4G_pred	A	Float	SIFT4G pred	If SIFT4G is < 0.05 the corresponding nsSNV is predicted as D(amaging); otherwise it is predicted as T(olerated). Multiple scores separated by ,, corresponding to Ensembl_transcriptid	Genes and Gene Predictions	http://sift.bii.a-star.edu.sg/sift4g/public//Homo_sapiens/				Functional Predictions
-SnpSift	SnpSift/DbNsfp	SIFT4G_score	dbNSFP_SIFT4G_score	A	Float	SIFT4G score	SIFT 4G score (SIFT4G). Scores range from 0 to 1. The smaller the score themore likely the SNP has damaging effect. Multiple scores separated by commas, corresponding to Ensembl_transcriptid	Genes and Gene Predictions	http://sift.bii.a-star.edu.sg/sift4g/public//Homo_sapiens/				Functional Predictions
+SnpSift	SnpSift/DbNsfp	SIFT4G_pred	dbNSFP_SIFT4G_pred	A	Float	SIFT4G pred	If SIFT4G is < 0.05 the corresponding nsSNV is predicted as D(amaging); otherwise it is predicted as T(olerated). Multiple scores separated by commas, corresponding to Ensembl_transcriptid	Genes and Gene Predictions	http://sift.bii.a-star.edu.sg/sift4g/public//Homo_sapiens/				Functional Predictions
+SnpSift	SnpSift/DbNsfp	SIFT4G_score	dbNSFP_SIFT4G_score	A	Float	SIFT4G score	SIFT 4G score (SIFT4G). Scores range from 0 to 1. The smaller the score themore likely the SNP has damaging effect. Multiple scores separated by comma, corresponding to Ensembl_transcriptid	Genes and Gene Predictions	http://sift.bii.a-star.edu.sg/sift4g/public//Homo_sapiens/				Functional Predictions
 SnpSift	SnpSift/DbNsfp	VEST4_rankscore	dbNSFP_VEST4_rankscore	A	Float	VEST4 rankscore	VEST4 scores were ranked among all VEST4 scores in dbNSFP.  The rankscore is the ratio of the rank of the score over the total number of VEST4   scores in dbNSFP. In case there are multiple scores for the same variant, the largest   score (most damaging) is presented. The scores range from 0 to 1.   Please note VEST score is free for non-commercial use. For more details please refer to   http  the Johns Hopkins Technology Transfer office.	Genes and Gene Predictions	http://karchinlab.org/apps/appVest.html				Functional Predictions
 SnpSift	SnpSift/DbNsfp	VEST4_score	dbNSFP_VEST4_score	A	Float	VEST4 score	VEST 4.0 score. Score ranges from 0 to 1. The larger the score the more likely  the mutation may cause functional change.   Multiple scores separated by ;, corresponding to Ensembl_transcriptid.  Please note this score is free for non-commercial use. For more details please refer to   http  the Johns Hopkins Technology Transfer office.	Genes and Gene Predictions	http://karchinlab.org/apps/appVest.html				Functional Predictions
 SnpEff	SnpEff	IMPACT	IMPACT	A	String	Protein Coding IMPACT	This is the predicted effect on protein coding, calculated by SnpEff	Genes and Gene Predictions	https://pcingola.github.io/SnpEff/se_introduction/			HIGH,LOW,MODERATE,MODIFIER	
@@ -129,3 +129,95 @@ LiftOver	LiftOver	LiftedContig	LiftedContig	INTEGER	String	GRCh37 Contig	The nam
 LiftOver	LiftOver	LiftedStart	LiftedStart	INTEGER	Integer	GRCh37 Start	The start position of the variant on the lifted contig	Genes and Gene Predictions					
 LiftOver	LiftOver	LiftedStop	LiftedStop	INTEGER	Integer	GRCh37 End	The end position of the variant on the lifted contig	Genes and Gene Predictions					
 LiftOver	LiftOver	ReverseComplementedAlleles	ReverseComplementedAlleles	INTEGER	Flag	GRCh37 Reverse Complemented	If true, the lifted position in GRCh37 is reverse complemented relative to this genome	Genes and Gene Predictions					
+LiftOver	LiftOver	LF	LF	INTEGER	String	Unable to Lift to Human		Genes and Gene Predictions					
+Cassandra	Cassandra	CADD_PH				CADD Functional Prediction Score		Predicted Function					
+Cassandra	Cassandra	CADD_RS						Skipped Fields					
+Cassandra	Cassandra	CCDS						Skipped Fields					
+Cassandra	Cassandra	CLN_ALLELE				ClinVar Allele		Phenotypic Data					
+Cassandra	Cassandra	CLN_DBVARID				ClinVar dbVAR Accessions		Phenotypic Data					
+Cassandra	Cassandra	CLN_DISDB						Skipped Fields					
+Cassandra	Cassandra	CLN_DISDBINCL						Skipped Fields					
+Cassandra	Cassandra	CLN_DNINCL				ClinVar Disease/Concept		Phenotypic Data					
+Cassandra	Cassandra	CLN_GENEINFO				ClinVar Gene(s)		Phenotypic Data					
+Cassandra	Cassandra	CLN_HGVS						Skipped Fields					
+Cassandra	Cassandra	CLN_MC						Skipped Fields					
+Cassandra	Cassandra	CLN_ORIGIN						Skipped Fields					
+Cassandra	Cassandra	CLN_REVSTAT						Skipped Fields					
+Cassandra	Cassandra	CLN_RS				ClinVar RS Numbers		Phenotypic Data					
+Cassandra	Cassandra	CLN_SIGINCL						Skipped Fields					
+Cassandra	Cassandra	CLN_SSR						Skipped Fields					
+Cassandra	Cassandra	CLN_VC						Skipped Fields					
+Cassandra	Cassandra	CLN_VCSO						Skipped Fields					
+Cassandra	Cassandra	CLN_VI				ClinVar Sources		Phenotypic Data					
+Cassandra	Cassandra	ENC				ENCODE Class		Regulatory Data					
+Cassandra	Cassandra	ENCDNA_CT						Skipped Fields					
+Cassandra	Cassandra	ENCDNA_SC				ENCODE DNase Sensitivity Score		Skipped Fields					
+Cassandra	Cassandra	ENCSEG_NM				ENCODE Segmentation Status		Regulatory Data					
+Cassandra	Cassandra	ENCTFBS_CL						Skipped Fields					
+Cassandra	Cassandra	ENCTFBS_SC				ENCODE Transcription Factor Binding Site Score		Regulatory Data					
+Cassandra	Cassandra	ENCTFBS_TF				ENCODE Transcription Factors		Regulatory Data					
+Cassandra	Cassandra	ENN				ENCODE Feature Name		Regulatory Data					
+Cassandra	Cassandra	ERBCTA_CT						Skipped Fields					
+Cassandra	Cassandra	ERBCTA_NM				Ensembl Regulatory Build Predicted State							
+Cassandra	Cassandra	ERBCTA_SC						Skipped Fields					
+Cassandra	Cassandra	ERBSEG_CT						Skipped Fields					
+Cassandra	Cassandra	ERBSEG_NM						Skipped Fields					
+Cassandra	Cassandra	ERBSEG_SC						Skipped Fields					
+Cassandra	Cassandra	ERBSUM_NM						Skipped Fields					
+Cassandra	Cassandra	ERBSUM_SC						Skipped Fields					
+Cassandra	Cassandra	ERBTFBS_PB						Skipped Fields					
+Cassandra	Cassandra	ERBTFBS_TF						Skipped Fields					
+Cassandra	Cassandra	FC				Probable Promoter (FAMTOM5)		Predicted Function					
+Cassandra	Cassandra	FE				Probable Enhancer (FANTOM5)		Predicted Function					
+Cassandra	Cassandra	FS_EN				Funseq Annotated?		Regulatory Data					
+Cassandra	Cassandra	FS_NS				Funseq Noncoding Score		Regulatory Data					
+Cassandra	Cassandra	FS_SC				Funseq Non-coding Score		Regulatory Data					
+Cassandra	Cassandra	FS_SN				Funseq Sensitive Region?		Regulatory Data					
+Cassandra	Cassandra	FS_TG				Funseq Target Gene?		Regulatory Data					
+Cassandra	Cassandra	FS_US				Funseq Ultra-Sensitive Region?		Regulatory Data					
+Cassandra	Cassandra	FS_WS				Funseq Score		Regulatory Data					
+Cassandra	Cassandra	GRASP_AN				GRASP Ancestry		Phenotypic Data					
+Cassandra	Cassandra	GRASP_P				GRASP p-value		Phenotypic Data					
+Cassandra	Cassandra	GRASP_PH				GRASP Phenotype		Phenotypic Data					
+Cassandra	Cassandra	GRASP_PL				GRASP Platform		Phenotypic Data					
+Cassandra	Cassandra	GRASP_PMID				GRASP PMID		Phenotypic Data					
+Cassandra	Cassandra	GRASP_RS				GRASP SNP RS Number		Phenotypic Data					
+Cassandra	Cassandra	LOF				Predicted Loss-of-function		Predicted Function					
+Cassandra	Cassandra	NA						Skipped Fields					
+Cassandra	Cassandra	NC				nsdb SIFT Score		Predicted Function					
+Cassandra	Cassandra	NE				PolyPhen2 Score		Predicted Function					
+Cassandra	Cassandra	NF				PolyPhen2 Prediction		Predicted Function					
+Cassandra	Cassandra	NG				nsdb LRT Score		Predicted Function					
+Cassandra	Cassandra	NH				nsdb LRT Prediction		Predicted Function					
+Cassandra	Cassandra	NJ				MutationTaster Prediction		Predicted Function					
+Cassandra	Cassandra	NK				MutationAssessor Score		Predicted Function					
+Cassandra	Cassandra	NL				MutationAssessor Prediction		Predicted Function					
+Cassandra	Cassandra	NM						Skipped Fields					
+Cassandra	Cassandra	OMIMC				OMIM Comments		Phenotypic Data					
+Cassandra	Cassandra	OMIMD				OMIM Disorders		Phenotypic Data					
+Cassandra	Cassandra	OMIMM				OMIM Method		Phenotypic Data					
+Cassandra	Cassandra	OMIMMUS				OMIM Mouse Correlate		Phenotypic Data					
+Cassandra	Cassandra	OMIMN				OMIM Number		Phenotypic Data					
+Cassandra	Cassandra	OMIMS				OMIM Status		Phenotypic Data					
+Cassandra	Cassandra	OMIMT				OMIM Title		Phenotypic Data					
+Cassandra	Cassandra	OREGANNO_PMID						Skipped Fields					
+Cassandra	Cassandra	OREGANNO_TYPE						Skipped Fields					
+Cassandra	Cassandra	PC_PL				Conservation Score Among 46 Placental Mammals (PhastCons)		Comparative/Evolutionary Genomics					
+Cassandra	Cassandra	PC_PR				Conservation Score Among 46 Primates (PhastCons)		Comparative/Evolutionary Genomics					
+Cassandra	Cassandra	PC_VB				Conservation Score Among 100 Vertebrate Species (PhastCons)		Comparative/Evolutionary Genomics					
+Cassandra	Cassandra	PP_PL				Conservation Score Among 46 Placental Mammals (Phylop)		Comparative/Evolutionary Genomics					
+Cassandra	Cassandra	PP_PR				Conservation Score Among 46 Primates (Phylop)		Comparative/Evolutionary Genomics					
+Cassandra	Cassandra	PP_VB				Conservation Score Among 100 Vertebrate Species (Phylop)		Comparative/Evolutionary Genomics					
+Cassandra	Cassandra	RDB_MF				RegulomeDB Motifs		Regulatory Data					
+Cassandra	Cassandra	RDB_WS				RegulomeDB Score		Regulatory Data					
+Cassandra	Cassandra	RFG				Mutation Type (RefSeq)							
+Cassandra	Cassandra	RSID						Skipped Fields					
+Cassandra	Cassandra	SCSNV_ADA						Skipped Fields					
+Cassandra	Cassandra	SCSNV_RS						Skipped Fields					
+Cassandra	Cassandra	SD				Swiss Prot Disease Annotations		Predicted Function					
+Cassandra	Cassandra	SF				Swiss Prot Protein Function		Skipped Fields					
+Cassandra	Cassandra	SM				Swiss Prot Post-translational Modifications		Predicted Function					
+Cassandra	Cassandra	SOR						Skipped Fields					
+Cassandra	Cassandra	SP_SC						Skipped Fields					
+Cassandra	Cassandra	SX				Swiss Prot Expression		Predicted Function					
+Cassandra	Cassandra	TMAF				1000Genomes Allele Frequency		Skipped Fields					
