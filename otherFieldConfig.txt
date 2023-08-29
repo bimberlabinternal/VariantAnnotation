@@ -127,6 +127,7 @@ SnpEff	SnpEff	HIG	VE	A	String	Variant Effect	"A comma-separated list of predicte
 SnpEff	SnpEff	ANN	ANN	INTEGER	String	SnpEff Annotation	This field contains a summar of the predicted effect(s) on protein coding	Genes and Gene Predictions	https://pcingola.github.io/SnpEff/se_introduction/					true
 GATK	mGAP	MAF	MAF	INTEGER	Float	Minor Allele Frequency	"The minor allele frequency (frequency of second most common allele), derived from the AF field. This includes the REF allele since in some cases this is not the most common allele"	Variation and Repeats						true
 GATK	mGAP	AF	AF	A	Float	Allele Frequency	The allele frequency within this dataset	Variation and Repeats						true
+mGAP	mGAP	mGAPV	mGAPV	INTEGER	String	mGAP Version	The first mGAP version where variants at this site appeared							true
 LiftOver	LiftOver	LiftedContig	LiftedContig	INTEGER	String	GRCh37 Contig	The name of the contig/chromosome after liftover	Genes and Gene Predictions						true
 LiftOver	LiftOver	LiftedStart	LiftedStart	INTEGER	Integer	GRCh37 Start	The start position of the variant on the lifted contig	Genes and Gene Predictions						true
 LiftOver	LiftOver	LiftedStop	LiftedStop	INTEGER	Integer	GRCh37 End	The end position of the variant on the lifted contig	Genes and Gene Predictions						true
