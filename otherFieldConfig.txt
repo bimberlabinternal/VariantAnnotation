@@ -140,12 +140,10 @@ Cassandra	Cassandra	CLN_ALLELE	CLN_ALLELE			ClinVar Allele		Phenotypic Data
 Cassandra	Cassandra	CLN_DBVARID	CLN_DBVARID			ClinVar dbVAR Accessions		Phenotypic Data						
 Cassandra	Cassandra	CLN_DISDB	CLN_DISDB					Legacy Fields						
 Cassandra	Cassandra	CLN_DISDBINCL	CLN_DISDBINCL					Legacy Fields						
-Cassandra	Cassandra	CLN_DNINCL	CLN_DNINCL			ClinVar Disease/Concept		Phenotypic Data						
 Cassandra	Cassandra	CLN_GENEINFO	CLN_GENEINFO			ClinVar Gene(s)		Phenotypic Data						
 Cassandra	Cassandra	CLN_HGVS	CLN_HGVS					Legacy Fields						
 Cassandra	Cassandra	CLN_MC	CLN_MC					Legacy Fields						
 Cassandra	Cassandra	CLN_ORIGIN	CLN_ORIGIN					Legacy Fields						
-Cassandra	Cassandra	CLN_REVSTAT	CLN_REVSTAT					Legacy Fields						
 Cassandra	Cassandra	CLN_RS	CLN_RS			ClinVar RS Numbers		Phenotypic Data						
 Cassandra	Cassandra	CLN_SIGINCL	CLN_SIGINCL					Legacy Fields						
 Cassandra	Cassandra	CLN_SSR	CLN_SSR					Legacy Fields						
