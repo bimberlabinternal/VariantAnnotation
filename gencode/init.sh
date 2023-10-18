@@ -22,10 +22,14 @@ if [[ `isProcessingCompleted` == 0 ]];then
 		rm -Rf hg38
 	fi
 	
-	wget -q -O getGencode.sh https://raw.githubusercontent.com/broadinstitute/gatk/master/scripts/funcotator/data_sources/getGencode.sh
+	GATK_DIR=$(dirname `which gatk`)
+	GATK_JAR=`find $GATK_DIR -name '*local.jar'`
+	TAG=`basename $GATK_JAR | sed s/gatk-package-// | sed s/-local.jar//`
+	
+	wget -q -O getGencode.sh https://raw.githubusercontent.com/broadinstitute/gatk/${TAG}/scripts/funcotator/data_sources/getGencode.sh
 	sed -i 's/wget/wget -q/' getGencode.sh
 	
-	wget -q -O fixGencodeOrdering.py https://raw.githubusercontent.com/broadinstitute/gatk/master/scripts/funcotator/data_sources/fixGencodeOrdering.py
+	wget -q -O fixGencodeOrdering.py https://raw.githubusercontent.com/broadinstitute/gatk/${TAG}/scripts/funcotator/data_sources/fixGencodeOrdering.py
 
 	chmod +x getGencode.sh
 	chmod +x fixGencodeOrdering.py
