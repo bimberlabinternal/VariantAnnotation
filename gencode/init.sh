@@ -39,13 +39,23 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	rm -Rf getGencode.sh
 	rm -Rf fixGencodeOrdering.py
 	
-	samtools faidx ./hg19/gencode.v34lift37.pc_transcripts.fa
-	samtools dict -o ./hg19/gencode.v34lift37.pc_transcripts.dict ./hg19/gencode.v34lift37.pc_transcripts.fa
-	gatk IndexFeatureFile -I ./hg19/gencode.v34lift37.annotation.REORDERED.gtf
+	HG19_FA=`find ./gencode/hg19/ -name '*transcripts.fa'`
+	samtools faidx $HG19_FA
+	
+	DICT=`echo $HG19_FA | sed 's/fa/dict/'`
+	samtools dict -o $DICT $HG19_FA
+	
+	GTF=`find ./gencode/hg19/ -name '*REORDERED.gtf'`
+	gatk IndexFeatureFile -I $GTF
 
-	samtools faidx ./hg38/gencode.v34.pc_transcripts.fa
-	samtools dict -o ./hg38/gencode.v34.pc_transcripts.dict ./hg38/gencode.v34.pc_transcripts.fa
-	gatk IndexFeatureFile -I ./hg38/gencode.v34.annotation.REORDERED.gtf
+	HG38_FA=`find ./gencode/hg38/ -name '*transcripts.fa'`
+	samtools faidx $HG38_FA
+	
+	DICT=`echo $HG38_FA | sed 's/fa/dict/'`
+	samtools dict -o $DICT $HG38_FA
+	
+	GTF=`find ./gencode/hg38/ -name '*REORDERED.gtf'`
+	gatk IndexFeatureFile -I $GTF
 
 	# MMul10:
 	if [ -e mmul10 ];then
