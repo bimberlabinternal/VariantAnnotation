@@ -24,7 +24,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	echo '##fileformat=VCFv4.2';
 	echo '##INFO=<ID=ClinPredScore,Number=A,Type=Float,Description="The pre-computed ClinPred score for all possible human missense variants in the exome">';
 	echo '#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO';
-	cat $TEMP_FILE  | tail -n +2 | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, ".", $3, $4, ".", "PASS", "ClinPredScore="$5 } ';
+	cat $TEMP_FILE  | tail -n +2 | grep -v '#' | uniq | awk -F'\t' -v OFS='\t' ' { print $1, $2, ".", $3, $4, ".", "PASS", "ClinPredScore="$5 } ';
 	} | bgzip --threads $N_THREADS > $OUTFILE
 
 	ensureIndexed $OUTFILE
