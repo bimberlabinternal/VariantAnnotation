@@ -22,7 +22,7 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	
 	# Position 11:15163 contains IUPAC bases, which HTSJDK does not allow:
 	TEMP_FILE2=clinvar_20230702.ss.vcf.gz
-	zcat $TEMP_FILE | awk -V OFS='\t' ' $5 != "YT" ' | bgzip -f > $TEMP_FILE2
+	zcat $TEMP_FILE | awk -v OFS='\t' ' $5 != "YT" ' | bgzip -f > $TEMP_FILE2
 	tabix -p vcf $TEMP_FILE2
 
 	cp $TEMP_FILE2 $OUTFILE
