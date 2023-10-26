@@ -10,10 +10,10 @@ fi
 source ${SCRIPT_DIR}/initFunctions.sh
 
 # The purpose of this script is to download conservation data from the web, and reformat as needed.
-URL="https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh37/clinvar_20230702.vcf.gz"
+URL="https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh37/clinvar.vcf.gz"
 GENOME=hg19
-TEMP_FILE=clinvar_20230702.vcf.gz
-OUTFILE=./$GENOME/clinvar_20230702.vcf.gz
+TEMP_FILE=clinvar.vcf.gz
+OUTFILE=./$GENOME/clinvar.vcf.gz
 NAME=ClinVar
 
 if [[ `isProcessingCompleted` == 0 ]];then
