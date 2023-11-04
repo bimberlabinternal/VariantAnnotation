@@ -22,7 +22,7 @@ with open('../fieldConfig.txt', 'r') as fieldInfo:
 
 sys.stderr.write('Total fields to include: ' + str(len(fields)) + '\n')
 
-files = [f for f in os.listdir('.') if re.match(r'./dbNSFP/dbNSFP4.4a_variant.*\.gz', f)]
+files = [f for f in os.listdir('./dbNSFP4') if re.match(r'dbNSFP4.4a_variant.*\.gz', f)]
 files = sorted(files, key=natsort)
 
 for fn in files:
@@ -30,7 +30,7 @@ for fn in files:
 
     lineNum=0
     fieldToIdx = {}
-    with gzip.open(fn, 'rt') as inputFile:
+    with gzip.open('./dbNSFP4/' + fn, 'rt') as inputFile:
         for line in inputFile:
             lineNum += 1
             line = line.strip().split('\t')
