@@ -62,4 +62,4 @@ for fn in files:
                     infoFields.append(fieldName + '=' + val)
             
             # Contig, Pos, ID, Ref, Alt, QUAL, Filter, INFO
-            sys.stdout.write('\t'.join([line[0], '.', line[1], line[2], line[3], '.', 'PASS', ';'.join(infoFields)]) + '\n')
+            sys.stdout.write('\t'.join([line[0], line[1], '.', line[2], line[3], '.', 'PASS', ';'.join(infoFields)]) + '\n')

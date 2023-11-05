@@ -14,7 +14,7 @@ URL="https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh37/whole_genome_SN
 GENOME=hg19
 TEMP_FILE=whole_genome_SNVs.tsv.gz
 OUTFILE=./$GENOME/cadd.vcf.gz
-NAME=cadd
+NAME=CADD
 
 if [[ `isProcessingCompleted` == 0 ]];then
 	ensureGenomeFolderExists $GENOME
