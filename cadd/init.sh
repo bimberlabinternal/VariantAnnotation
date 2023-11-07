@@ -23,8 +23,9 @@ if [[ `isProcessingCompleted` == 0 ]];then
 	{
 	echo '##fileformat=VCFv4.2';
 	echo '##INFO=<ID=CADD_PH,Number=A,Type=Float,Description="This is the CADD PHRED score">';
+	echo '##INFO=<ID=CADD_RAW,Number=A,Type=Float,Description="This is the raw CADD score">';
 	echo '#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO';
-	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, ".", $3, $4, ".", "PASS", "CADD_PH="$5 } ';
+	zcat $TEMP_FILE | grep -v '#' | awk -F'\t' -v OFS='\t' ' { print $1, $2, ".", $3, $4, ".", "PASS", "CADD_PH="$6";CADD_RAW="$5 } ';
 	} | bgzip --threads $N_THREADS > $OUTFILE
 	
 	ensureIndexed $OUTFILE
