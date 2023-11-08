@@ -7,10 +7,10 @@ SnpEff	SnpEff	ANN	ANN	INTEGER	String	SnpEff Annotation	This field contains a sum
 GATK	mGAP	MAF	MAF	INTEGER	Float	Minor Allele Frequency	"The minor allele frequency (frequency of second most common allele), derived from the AF field. This includes the REF allele since in some cases this is not the most common allele"	Variation and Repeats						true
 GATK	mGAP	AF	AF	A	Float	Allele Frequency	The allele frequency within this dataset	Variation and Repeats						true
 mGAP	mGAP	mGAPV	mGAPV	INTEGER	String	mGAP Version	The first mGAP version where variants at this site appeared	mGAP						true
-LiftOver	LiftOver	LiftedContig	LiftedContig	INTEGER	String	GRCh37 Contig	The name of the contig/chromosome after liftover	Genes and Gene Predictions						true
-LiftOver	LiftOver	LiftedStart	LiftedStart	INTEGER	Integer	GRCh37 Start	The start position of the variant on the lifted contig	Genes and Gene Predictions						true
-LiftOver	LiftOver	LiftedStop	LiftedStop	INTEGER	Integer	GRCh37 End	The end position of the variant on the lifted contig	Genes and Gene Predictions						true
-LiftOver	LiftOver	ReverseComplementedAlleles	ReverseComplementedAlleles	INTEGER	Flag	GRCh37 Reverse Complemented	"If true, the lifted position in GRCh37 is reverse complemented relative to this genome"	Genes and Gene Predictions						true
+LiftOver	LiftOver	LiftedContig	LiftedContig	INTEGER	String	GRCh37 Contig	The name of the contig/chromosome after liftover	LiftOver						true
+LiftOver	LiftOver	LiftedStart	LiftedStart	INTEGER	Integer	GRCh37 Start	The start position of the variant on the lifted contig	LiftOver						true
+LiftOver	LiftOver	LiftedStop	LiftedStop	INTEGER	Integer	GRCh37 End	The end position of the variant on the lifted contig	LiftOver						true
+LiftOver	LiftOver	ReverseComplementedAlleles	ReverseComplementedAlleles	INTEGER	Flag	GRCh37 Reverse Complemented	"If true, the lifted position in GRCh37 is reverse complemented relative to this genome"	LiftOver						true
 LiftOver	LiftOver	LF	LF	INTEGER	String	Unable to Lift to Human		Genes and Gene Predictions						
 Cassandra	Cassandra	CADD_PH	CADD_PH			CADD Functional Prediction Score		Predicted Function						
 Cassandra	Cassandra	CADD_RS	CADD_RS					Legacy Fields						
