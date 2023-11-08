@@ -55,6 +55,10 @@ for fn in files:
 
                 val = '|'.join(set(val))
                 
+                # Replace special chars in value:
+                val = re.sub(r' ', '_', val)
+                val = re.sub(r';', '_', val)
+                
                 if val:
                     # Replace special characters
                     fieldName = fieldName.replace('+', '_')
