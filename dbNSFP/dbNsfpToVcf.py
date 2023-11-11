@@ -61,8 +61,7 @@ for fn in files:
                 
                 if val:
                     # Replace special characters
-                    fieldName = fieldName.replace('+', '_')
-                    fieldName = fieldName.replace(' ', '_')
+                    fieldName = fieldName.replace('+', '_').replace('-', '_').replace(' ', '_')
                     infoFields.append(fieldName + '=' + val)
             
             # Contig, Pos, ID, Ref, Alt, QUAL, Filter, INFO
